@@ -9,7 +9,7 @@ export default function Search() {
     const word = router.query.q;
 
 
-    const items = useMemo(() => ganimes.filter((anime) => anime.name.replaceAll(' ', '').includes(word.replaceAll(' ', '')))
+    const items = useMemo(() => ganimes.filter((anime) => (anime.name || '').replaceAll(' ', '').includes(word.replaceAll(' ', '')))
         .sort((a, b) => a.length - b.length), [word]);
 
 
