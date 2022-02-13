@@ -6,7 +6,7 @@ import Head from 'next/head';
 export default function App({ Component, pageProps }) {
     const router = useRouter();
 
-    return (<div id="ganime-app">
+    return (<div id="gaknime-app">
         <Head>
             <title>각프텔 - 각니메 스트리밍</title>
             <meta name="description" content="각니메들을 손쉽게 플레이리스트로 스트리밍하세요." />

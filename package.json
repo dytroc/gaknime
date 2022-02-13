@@ -1,5 +1,5 @@
 {
-  "name": "ganime",
+  "name": "gaknime",
   "private": true,
   "scripts": {
     "dev": "next dev",

@@ -32,7 +32,7 @@ export default function Header({ isHome }) {
         <a style={{
             color: scrollY <= 100 ? 'white' : 'black',
             textShadow: `rgba(0, 0, 0, 0.4) 0 0 ${scrollY <= 100 ? '0.2vw' : 0}`
-        }} href="/" className={styles.logo}>GANIME</a>
+        }} href="/" className={styles.logo}>GAKNIME</a>
 
         <input
             className={styles.search}

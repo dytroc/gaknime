@@ -1,6 +1,6 @@
 let universalId = 0;
 
-class Ganime {
+class Gaknime {
     constructor(name, thumbnail, tags = ["없음"], genres = ["없음"], episodes = [{
         title: "", code: "", no_prefix: false, hqdefault: false
     }]) {
@@ -17,8 +17,8 @@ class Ganime {
 // 태그: 공각기동대, 시참, 패널티
 // 장르: 야생, 일상, 개발, 실험, 미니게임, 마크 외 게임, 교육
 
-export const ganimes = [
-    new Ganime(
+export const gaknimes = [
+    new Gaknime(
         "좀비생활!", "Amyg8VJl7Gg", ["공각기동대", "시참"], ["야생"],
         [
             { title: '모든 일의 시작', code: 'Amyg8VJl7Gg' },
@@ -33,7 +33,7 @@ export const ganimes = [
             { title: 'OVA 비하인드', code: 'Uhhb8uSYf80', no_prefix: true },
         ]
     ),
-    new Ganime(
+    new Gaknime(
         "마인크래프트 무인도 대탈출 리얼 서바이벌 생존기", "qnGmq2jATes", ["공각기동대", "시참"], ["야생"],
         [
             { title: '사고', code: 'qnGmq2jATes' },
@@ -44,7 +44,7 @@ export const ganimes = [
             { title: '탈출', code: 'KpqYlP4V_wM' },
         ]
     ),
-    new Ganime(
+    new Gaknime(
         "내 부동산이 이렇게 비쌀리가 없어", "gcDuBGnFwtQ", [""],["미니게임"],
         [
             { title: '지역 계획', code: 'gcDuBGnFwtQ' },
@@ -56,7 +56,7 @@ export const ganimes = [
             { title: '진행 (3편)', code: 'HTcbF6XOQYg' },
         ]
     ),
-    new Ganime(
+    new Gaknime(
         "각별 님은 인벤토리를 확장하고 싶어", "bO6ZVEeTa5k", ["공각기동대", "패널티"], ["야생"],
         [
             { title: '각별 님은 인벤토리를 확장하고 싶어', code: 'bUziXPSoP30' },
@@ -70,7 +70,7 @@ export const ganimes = [
             { title: '각별 님은 동거를 끝내고 싶어', code: 'mgCnMmUN6WQ' },
         ]
     ),
-    new Ganime(
+    new Gaknime(
         "새해에 뭐 하세요? 바쁘세요? 해돋이 볼 수 있나요?", "8Hi1Kprk5m8", ["시참"], ["야생"],
         [
             { title: '2020년', code: 'ObciwqTSnNk', no_prefix: true },
@@ -78,7 +78,7 @@ export const ganimes = [
             { title: '2022년', code: 'DGZbQnZGi-w', no_prefix: true },
         ]
     ),
-    new Ganime(
+    new Gaknime(
         "배신의 형태", "umrhcUDEoeQ", ["패널티"], ["야생"],
         [
             { title: '모든 것의 시작', code: 'umrhcUDEoeQ' },
@@ -90,7 +90,7 @@ export const ganimes = [
             { title: 'OVA 비하인드', code: 'yoQuwKlsdLY', no_prefix: true },
         ]
     ),
-    new Ganime(
+    new Gaknime(
         "노 부품 노 방송", "3X_XMJ2whOU", [""], ["일상"],
         [
             { title: '그래픽 카드 Graphic Card', code: '4XQ0fWI1UrA' },
@@ -99,7 +99,7 @@ export const ganimes = [
             { title: '소개 Introduction', code: '3X_XMJ2whOU' },
         ]
     ),
-    new Ganime(
+    new Gaknime(
         "각별의 기묘한 능력", "kMJWVBGLrA4", [""], ["개발"],
         [
             { title: '기획자 공룡과 트수들', code: '5dV1zqGub5E' },
@@ -111,7 +111,7 @@ export const ganimes = [
             { title: '마크의 골렘', code: 'xXI8ebP2y8k' },
         ]
     ),
-    new Ganime(
+    new Gaknime(
         "서버를 잘 만드는 각별씨", "Wte0_as9h3E", [""], ["개발", "실험"],
         [
             { title: '기획 시간', code: 'Wte0_as9h3E' },
@@ -124,7 +124,7 @@ export const ganimes = [
             { title: '숙제', code: 'G9OOOacxt0o' },
         ]
     ),
-    new Ganime(
+    new Gaknime(
         "주문은 돌입니까?", "Q30OeBJ9NEs", ["시참"], ["미니게임"],
         [
             { title: '옛날에 있던 전통을 요즘 시대로 재해석해봤어', code: 'FqAD6Z2Ivoo', hq_default: true },
@@ -134,7 +134,7 @@ export const ganimes = [
             { title: '저번 석전 기억해? 팀원 조차도 모두가 각별을 죽이려 했잖아', code: 'Q30OeBJ9NEs' },
         ]
     ),
-    new Ganime(
+    new Gaknime(
         "휴먼 슬레이어", "ZCpwesUfQnQ", ["시참", "패널티"], ["야생"],
         [
             { title: '탑을 건설해라', code: '-gTfedY0Glg' },
@@ -145,7 +145,7 @@ export const ganimes = [
             { title: '뜻밖의 조별과제', code: 'MJl_geN9h2w' },
         ]
     ),
-    new Ganime(
+    new Gaknime(
         "돈 몇 원까지 보낼 수 있어?", "ZiSL5-0mdKs", ["공각기동대", "패널티"], ["야생"],
         [
             { title: '돈 좀 안 보내줄 수 있어?', code: 'ppVDIBlB34g' },
@@ -155,14 +155,14 @@ export const ganimes = [
             { title: '농장 만드는 거 도와줄래?', code: 'ZiSL5-0mdKs' },
         ]
     ),
-    new Ganime(
+    new Gaknime(
         "전생했더니 악령이었던 건에 대하여", "3iEdDWivHus", ["시참"], ["야생"],
         [
             { title: '악령 멤버쉽들', code: '3iEdDWivHus' },
             { title: '악령의 습격', code: 'OlfKR3SWB4Y' },
         ]
     ),
-    new Ganime(
+    new Gaknime(
         "공룡에게 하이퍼코어는 어려워", "BC-JpD4pmdM", ["공각기동대"], ["야생"],
         [
             { title: '스켈리톤', code: '4UV8gM5-KKM' },
@@ -178,7 +178,7 @@ export const ganimes = [
             { title: '눈물', code: 'ZDgnu2kJ6b8' },
         ]
     ),
-    new Ganime(
+    new Gaknime(
         "우리는 자유로운 대화를 못해", "H2KYHPSewBs", ["공각기동대", "패널티"], ["야생"],
         [
             { title: '각별과 공룡은 [ X ] 중이다', code: '5FHP15Q7LsM' },
@@ -187,14 +187,14 @@ export const ganimes = [
             { title: '이상한 플레이어들은 [ X ]로 대화한다', code: 'H2KYHPSewBs' },
         ]
     ),
-    new Ganime(
+    new Gaknime(
         "어쨌든 똑똑해", "k6VZespi7-M", [""], ["개발", "마크 외 게임", "교육"],
         [
             { title: '코드', code: 'k6VZespi7-M' },
             { title: '개발', code: '-3eLKt9RvaY' },
         ]
     ),
-    new Ganime(
+    new Gaknime(
         "현실 세계 경험담", "PY8iz-85__8", [""], ["일상"],
         [
             { title: '「건강검진」', code: 'wtiw91OlS8Y' },
@@ -202,14 +202,14 @@ export const ganimes = [
             { title: '「운전」', code: 'PY8iz-85__8' },
         ]
     ),
-    new Ganime(
+    new Gaknime(
         "비효율적인 건 싫으니까 다중작업에 올인하려고 합니다", "VBeKycekkZI", [""], ["미니게임"],
         [
             { title: '다중작업 특화와 능력 검증', code: 'VBeKycekkZI' },
             { title: '다중작업 특화와 커플의 능력 검증', code: 'YcBGBF3vzOo' },
         ]
     ),
-    new Ganime(
+    new Gaknime(
         "훈수라는 개념이 존재하지 않는 지루한 각별 방송", "fa3a-8PuIaQ", [""], ["교육"],
         [
             { title: '1.16', code: 'XmKV2Iw-7rM', no_prefix: true },
@@ -217,7 +217,7 @@ export const ganimes = [
             { title: '1.18', code: 'zxZ5IOF-l4Q', no_prefix: true },
         ]
     ),
-    new Ganime(
+    new Gaknime(
         "몬스터 드롭아웃", "sh8UuXhxg2w", ["공각기동대"], ["미니게임"],
         [
             { title: '이 게임이 졸렬해질 걸 알게 된 어느 날', code: 'sh8UuXhxg2w' },

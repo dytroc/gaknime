@@ -1,5 +1,5 @@
 import styles from './Bar.module.css';
-import GanimeItem from 'components/GanimeItem';
+import GaknimeItem from 'components/GaknimeItem';
 import { useEffect, useMemo, useRef, useState } from 'react';
 
 export default function Bar({ title, items }) {
@@ -58,8 +58,8 @@ export default function Bar({ title, items }) {
                 borderBottomRightRadius: '0.35vw',
                 borderTopRightRadius: '0.35vw',
             }} />}
-            {Array.from(order).map(([index, ganime]) => <GanimeItem
-                ganime={ganime} order={index} isFirst={!hasMoved && index === 0} currentOrder={currentOrder[0]} key={index}
+            {Array.from(order).map(([index, gaknime]) => <GaknimeItem
+                gaknime={gaknime} order={index} isFirst={!hasMoved && index === 0} currentOrder={currentOrder[0]} key={index}
                 transitionDisplayed={currentOrder[1]} hasMoved={hasMoved} hasNegative={items.length > 5}
             />)}
             {order.size > 5 && <Arrow side='>' style={{

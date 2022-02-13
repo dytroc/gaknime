@@ -1,15 +1,15 @@
 import { useRouter } from 'next/router';
 import styles from 'styles/Search.module.css';
 import { useMemo } from 'react';
-import { ganimes } from 'constants/ganimes';
-import GanimeItem from 'components/GanimeItem';
+import { gaknimes } from 'constants/gaknimes';
+import GaknimeItem from 'components/GaknimeItem';
 
 export default function Search() {
     const router = useRouter();
     const word = router.query.q;
 
 
-    const items = useMemo(() => ganimes.filter((anime) => (anime.name || '').replaceAll(' ', '').includes(word.replaceAll(' ', '')))
+    const items = useMemo(() => gaknimes.filter((anime) => anime.name.replace(/ /, '').includes(word.replace(/ /, '')))
         .sort((a, b) => a.length - b.length), [word]);
 
 
@@ -25,7 +25,7 @@ export default function Search() {
         <div className={styles.result}><span className={styles.keyword}>‘{word}’</span> 검색 결과</div>
 
         <div className={styles.items}>
-            {items.map((item, index) => <GanimeItem key={index} ganime={item} width={(96.5 - 2.5) / 6} style={{
+            {items.map((item, index) => <GaknimeItem key={index} gaknime={item} width={(96.5 - 2.5) / 6} style={{
                 marginBottom: '3.5vh'
             }} />)}
         </div>
