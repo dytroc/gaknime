@@ -1,0 +1,54 @@
+.bar {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.title {
+    font-size: 1.5vw;
+    font-weight: bold;
+    margin-bottom: 1.5vh;
+
+    margin-left: 3vw;
+}
+
+.list {
+    display: flex;
+    flex-direction: row;
+    overflow-x: scroll;
+    gap: 0.5vw;
+    width: 100%;
+
+    scroll-behavior: smooth;
+}
+
+.list::-webkit-scrollbar {
+    display: none;
+}
+
+.arrow {
+    display: flex;
+    position: absolute;
+    background: rgba(0, 0, 0, 0.5);
+    width: 2.75vw;
+    height: 10.29375vw;
+    color: white;
+    font-size: 2vw;
+
+    justify-content: center;
+    align-items: center;
+
+    font-weight: bold;
+
+    transition: opacity 0.5s;
+    opacity: 0;
+
+    cursor: pointer;
+
+    z-index: 900;
+}
+
+.list:hover .arrow {
+    transition: opacity 0.5s;
+    opacity: 100%;
+}

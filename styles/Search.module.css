@@ -1,0 +1,39 @@
+.main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.not_found_text {
+    font-size: 1.5vw;
+    color: #727272;
+}
+
+.result {
+    align-self: flex-start;
+    font-weight: bold;
+    font-size: 1.75vw;
+    color: #727272;
+
+    margin: 3.5vh;
+}
+
+.keyword {
+    color: black;
+}
+
+.items {
+    display: flex;
+    flex-wrap: wrap;
+    width: 96.5vw;
+    gap: 0.5vw;
+}
+
+.not_found {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}

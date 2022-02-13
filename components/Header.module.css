@@ -1,0 +1,52 @@
+.header {
+    z-index: 1000;
+    position: fixed;
+
+    top: 0;
+
+    display: flex;
+    flex-direction: row;
+    height: 8vh;
+
+    width: 100%;
+
+    align-items: center;
+    justify-content: center;
+
+    transition: all 0.4s;
+}
+
+.logo {
+    transition: all 0.4s;
+
+    font-family: ONE-Mobile-POP, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    margin-left: 1vw;
+
+    cursor: pointer;
+    color: black;
+    font-size: 3vh;
+}
+
+.logo:hover {
+    text-decoration: none;
+}
+
+.search {
+    margin: auto;
+    height: 5vh;
+    width: 25%;
+
+    font-size: 2vh;
+
+    border: 0.1vw solid #dddddd;
+    background: #ffffff;
+
+    padding-left: 0.5vw;
+    border-radius: 0.2vw;
+
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+.search:focus {
+    outline: 0.1vw solid #111111;
+}
