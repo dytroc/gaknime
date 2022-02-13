@@ -9,7 +9,7 @@ export default function Search() {
     const word = router.query.q;
 
 
-    const items = useMemo(() => gaknimes.filter((anime) => (anime.name || '').replace(/ /, '').includes(word.replace(/ /, '')))
+    const items = useMemo(() => gaknimes.filter((anime) => (anime.name || '').replace(/ /, '').includes((word || '').replace(/ /, '')))
         .sort((a, b) => a.length - b.length), [word]);
 
 
