@@ -112,7 +112,7 @@ export const gaknimes = [
         ]
     ),
     new Gaknime(
-        "서버를 잘 만드는 각별씨", "Wte0_as9h3E", [""], ["개발", "실험"],
+        "서버를 잘 만드는 각별씨", "Wte0_as9h3E", ["공각기동대"], ["개발", "실험"],
         [
             { title: '기획 시간', code: 'Wte0_as9h3E' },
             { title: '땅', code: 'MjPrylBmNaw' },
@@ -223,6 +223,38 @@ export const gaknimes = [
             { title: '이 게임이 졸렬해질 걸 알게 된 어느 날', code: 'sh8UuXhxg2w' },
             { title: '공각의 비양심적인 날들', code: 'qX2UB3elTTg' },
             { title: '비양심적인 자와 치사한 자와 짭', code: '9KHZPxIDwqg' },
+        ]
+    ),
+    new Gaknime(
+        "청년 각별은 유크타의 초대장을 받지 못한다", "Hw1t67NqLyY", [""], ["미니게임"],
+        [
+            { title: '각별은 해커', code: 'PXnza5Qchl4' },
+            { title: '두번째 유크타엔 버그가 따르는 법', code: 'Hw1t67NqLyY' },
+            { title: '정상이 없는 세상', code: 'dN5roXbykTY' },
+        ]
+    ),
+    new Gaknime(
+        "각별 씨는 직진 중입니다", "BMnbHgJodCA", ["공각기동대"], ["실험"],
+        [
+            { title: '직진으로만 가는 중입니다', code: 'MF4ExrCHkek' },
+            { title: '막을 수 있는 건 보트입니다', code: 'BMnbHgJodCA' },
+        ]
+    ),
+    new Gaknime(
+        "각별교실", "7ecVgs6B62A", ["공각기동대"], ["교육"],
+        [
+            { title: '백터의 시간', code: 'NGQWDgG2iNs' },
+            { title: '진법의 시간', code: 'Zj0tbZhdjL0' },
+            { title: '중력의 시간', code: 'MGdIGKuahK0' },
+            { title: '계산의 시간', code: '7ecVgs6B62A' },
+        ]
+    ),
+    new Gaknime(
+        "복수를 위해서라면, 나는 크리퍼도 악랄하게 숨길 수 있을지 몰라", "iwgwUmVFUFU", ["공각기동대"], ["미니게임"],
+        [
+            { title: '청년, 크리퍼를 숨긴다', code: 'iwgwUmVFUFU' },
+            { title: '악마 사과, 크리퍼 찾기를 시작하다', code: '7-MHSmOaXQI' },
+            { title: '청년, 상추를 속이다', code: 'hXsiloqC6Mk' },
         ]
     ),
 ]
