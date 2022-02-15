@@ -40,7 +40,7 @@ export default function Header({ isHome }) {
             onChange={(event) => setSearchKeyword(event.target.value)}
             onKeyPress={event => {
                 if (event.key === 'Enter' && searchKeyword.length > 0) {
-                    router.push({ pathname: 'search', query: { q: searchKeyword } }).then(() => {
+                    router.push({ pathname: '/search', query: { q: searchKeyword } }).then(() => {
                         setScrollY(200);
                     })
                 }
