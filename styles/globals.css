@@ -55,3 +55,12 @@ a:hover {
   transform: translateY(0%);
   display: block;
 }
+
+.unscrolled:hover {
+  color: #bbbbbb !important;
+  text-shadow: none !important;
+}
+
+.scrolled:hover {
+  color: #cccc00 !important;
+}

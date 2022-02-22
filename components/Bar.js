@@ -45,7 +45,7 @@ export default function Bar({ title, items }) {
             setCurrentOrder([result, false])
 
             setIsMoving(false);
-        }, 800);
+        }, 1200);
 
         return () => clearTimeout(timeout)
     }, [currentOrder])

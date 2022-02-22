@@ -7,7 +7,7 @@ export default function GaknimeItem({
 }) {
 
     return <a href={"/item/" + gaknime.id} className={styles.item} key={gaknime.title} style={{
-        transition: transitionDisplayed ? 'transform 0.8s' : 'none',
+        transition: transitionDisplayed ? 'transform 1.2s' : 'none',
         transform: `translate(${
             ((currentOrder * 18.8) + (hasNegative ? hasMoved ? 15.58 : 112.8 : hasNegative)) * -1
         }vw, 0)`,

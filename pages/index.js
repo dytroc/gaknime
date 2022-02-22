@@ -7,7 +7,7 @@ import { useEffect, useState } from 'react';
 export default function Home() {
 
     const [displayedBars, setDisplayedBars] = useState();
-    const [banner, setBanner] = useState(banners[0]);
+    const [banner, setBanner] = useState(undefined);
 
     useEffect(() => {
         setDisplayedBars(getRandomBars(4));
@@ -18,7 +18,7 @@ export default function Home() {
     return (
     <>
         <div className={styles.main}>
-            <Banner banner={banner} />
+            {banner && <Banner banner={banner} />}
             <br />
             {displayedBars}
             <br />

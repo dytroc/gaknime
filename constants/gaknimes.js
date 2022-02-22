@@ -57,7 +57,7 @@ export const gaknimes = [
         ]
     ),
     new Gaknime(
-        "각별 님은 인벤토리를 확장하고 싶어", "bO6ZVEeTa5k", ["공각기동대", "패널티"], ["야생"],
+        "각별 님은 인벤토리를 확장하고 싶어 ~천재들의 인벤토리 해방전~", "bO6ZVEeTa5k", ["공각기동대", "패널티"], ["야생"],
         [
             { title: '각별 님은 인벤토리를 확장하고 싶어', code: 'bUziXPSoP30' },
             { title: '각별 님은 탐험을 하고 싶어', code: 'YQvLfQsyAfo' },
@@ -255,6 +255,33 @@ export const gaknimes = [
             { title: '청년, 크리퍼를 숨긴다', code: 'iwgwUmVFUFU' },
             { title: '악마 사과, 크리퍼 찾기를 시작하다', code: '7-MHSmOaXQI' },
             { title: '청년, 상추를 속이다', code: 'hXsiloqC6Mk' },
+        ]
+    ),
+    new Gaknime(
+        "고인물 망겜의 트롤 플래그밖에 없는 고인물이랑 팀이 되어버렸다...", "fDZwpmLrWxY", [""], ["미니게임"],
+        [
+            { title: '고인물의 교육을 받아버리고 말았다...', code: 'fDZwpmLrWxY' },
+            { title: '고인물과 저격만이 있는 게임을 플레이하고 말았다...', code: 'HWRSTnVTdmU' },
+        ]
+    ),
+    new Gaknime(
+        "그날 본 꽃의 이름을 안 우리는 지금 죽었다", "H1MMp8NEeUI", ["공각기동대"], ["미니게임"],
+        [
+            { title: '움직이고 움직이지 말아줘', code: '7Ht-1rtzllU' },
+            { title: '타인을 골로 보내는 모임', code: 'H1MMp8NEeUI' },
+        ]
+    ),
+    new Gaknime(
+        "너에게 판결이 내려왔다!", "g_8svQAq-fw", [""], ["일상"],
+        [
+            { title: '때리고싶은 기분', code: '7Ht-1rtzllU' },
+        ]
+    ),
+    new Gaknime(
+        "마크에서 돈을 추구하면 안 되는 걸까", "JPaKFwSlE8w", ["공각기동대"], ["야생"],
+        [
+            { title: '운영자', code: 'JPaKFwSlE8w' },
+            { title: '행운 전쟁', code: 'HPGA5N7D-qs' },
         ]
     ),
 ]

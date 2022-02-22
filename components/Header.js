@@ -34,6 +34,11 @@ export default function Header({ isHome }) {
             textShadow: `rgba(0, 0, 0, 0.4) 0 0 ${scrollY <= 100 ? '0.2vw' : 0}`
         }} href="/" className={styles.logo}>GAKNIME</a>
 
+        <a className={styles.links + (scrollY <= 100 ? ' unscrolled' : ' scrolled')} style={{
+            color: scrollY <= 100 ? 'white' : 'black',
+            textShadow: `rgba(0, 0, 0, 0.2) 0 0 ${scrollY <= 100 ? '0.2vw' : 0}`,
+        }} href="https://github.com/dytroInc/gaknime">소스코드</a>
+
         <input
             className={styles.search}
             value={searchKeyword}
