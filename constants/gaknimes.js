@@ -274,7 +274,7 @@ export const gaknimes = [
     new Gaknime(
         "너에게 판결이 내려왔다!", "g_8svQAq-fw", [""], ["일상"],
         [
-            { title: '때리고싶은 기분', code: '7Ht-1rtzllU' },
+            { title: '때리고싶은 기분', code: 'g_8svQAq-fw' },
         ]
     ),
     new Gaknime(
