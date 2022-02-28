@@ -5,8 +5,6 @@ import Head from 'next/head';
 
 export default function App({ Component, pageProps }) {
     const router = useRouter();
-    
-    return <span>죄송하지만 3.1절에는 운영하지 않습니다</span>;
 
     return (<div id="gaknime-app">
         <Head>
