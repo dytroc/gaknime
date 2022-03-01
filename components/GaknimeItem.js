@@ -1,17 +1,17 @@
 import styles from './GaknimeItem.module.css';
 
 export default function GaknimeItem({
-    gaknime, order = 0, currentOrder = 0, isFirst = false,
-    transitionDisplayed = false, hasNegative = false, hasMoved = false, width = 18.3,
-    style = {}
+    gaknime, order = 0, currentOrder = 0,
+    transitionDisplayed = false, width = 18.3,
+    style = {}, tilted = false,
 }) {
 
     return <a href={"/item/" + gaknime.id} className={styles.item} key={gaknime.title} style={{
         transition: transitionDisplayed ? 'transform 1.2s' : 'none',
         transform: `translate(${
-            ((currentOrder * 18.8) + (hasNegative ? hasMoved ? 15.58 : 112.8 : hasNegative)) * -1
+            ((currentOrder * 18.8) * -1) + (tilted ? 3.25 : 0)
         }vw, 0)`,
-        marginLeft: isFirst ? "3.25vw" : 0,
+        marginLeft: 0,
         order: order,
         flex: `0 0 ${width}vw`,
         ...style

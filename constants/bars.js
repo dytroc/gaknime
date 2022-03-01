@@ -12,7 +12,6 @@ export const bars = [
 ]
 
 export function getRandomBars(count) {
-    console.table(bars)
     const cloned = [...bars].sort(() => 0.5 - Math.random());
     return cloned.slice(0, count).map((bar, index) => {
         return <Bar key={index} title={bar.catchphrase} items={bar.filter.sort(() => 0.5 - Math.random())} />;

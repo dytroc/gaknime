@@ -10,8 +10,6 @@ export default function Item() {
     const router = useRouter();
     const { item } = router.query;
 
-    console.log(item);
-
     const gaknime = useMemo(() => gaknimes.find((anime) => anime.id.toString() === item), [item]);
 
     if (gaknime == null) return <NotFound />

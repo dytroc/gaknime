@@ -1,6 +1,7 @@
 import styles from './Bar.module.css';
 import GaknimeItem from 'components/GaknimeItem';
 import { useEffect, useMemo, useRef, useState } from 'react';
+import { gaknimes } from 'constants/gaknimes';
 
 export default function Bar({ title, items }) {
 
@@ -12,37 +13,46 @@ export default function Bar({ title, items }) {
     const [isMoving, setIsMoving] = useState(false);
 
     const order = useMemo(() => {
+        if (currentOrder[1] === true) return;
         const result = new Map();
 
         items.forEach((item, key) => {
             result.set(key, item);
-            if (items.length > 5)   {
-                result.set(items.length + key + 1, item);
-                if (items.length < 7) result.set((items.length * 2) + key + 1, item);
-                if (key >= items.length - 6) {
-                    result.set(key - items.length, item);
+            if (items.length > 5) {
+                if (items.length >= 10) {
+                    if (key < 10) result.set(items.length + key, item);
+                } else {
+                    result.set(items.length + key, item);
+                    if (key < (10 - items.length)) {
+                        result.set(items.length * 2 + key, item);
+                    }
                 }
             }
-
         });
-        // console.log(result)
+
         return result;
     }, []);
 
     useEffect(() => {
         if (!currentOrder[1]) return
         const timeout = setTimeout(() => {
-            let result = currentOrder[0];
 
-            if (result > items.length) {
-                result -= items.length
+            if (!order.has(-1)) {
+                setCurrentOrder(current => [current[0] + 6, false])
+                for (let i = 1; i <= 6; i++) {
+                    order.set(-i, items[items.length - i])
+                }
+            } else {
+                let result = currentOrder[0];
+
+
+                if (result < 6) {
+                    result += items.length;
+                } else if (result >= order.size - 10) {
+                    result -= items.length;
+                }
+                setCurrentOrder([result, false])
             }
-
-            if (result < 4) {
-                result += items.length
-            }
-
-            setCurrentOrder([result, false])
 
             setIsMoving(false);
         }, 1200);
@@ -59,8 +69,8 @@ export default function Bar({ title, items }) {
                 borderTopRightRadius: '0.35vw',
             }} />}
             {Array.from(order).map(([index, gaknime]) => <GaknimeItem
-                gaknime={gaknime} order={index} isFirst={!hasMoved && index === 0} currentOrder={currentOrder[0]} key={index}
-                transitionDisplayed={currentOrder[1]} hasMoved={hasMoved} hasNegative={items.length > 5}
+                gaknime={gaknime} order={index} currentOrder={currentOrder[0]} key={index}
+                transitionDisplayed={currentOrder[1]} tilted
             />)}
             {order.size > 5 && <Arrow side='>' style={{
                 right: 0,
@@ -70,11 +80,11 @@ export default function Bar({ title, items }) {
         </div>
     </div>
 
-    function Arrow({ side, style }) {
-        return (<div className={styles.arrow} style={style} onClick={() => {
+    function Arrow({ side, style, additionalClass = '' }) {
+        return (<div className={styles.arrow + additionalClass} style={style} onClick={() => {
             if (isMoving) return
             setIsMoving(true);
-            let result = currentOrder[0] + (side === '>' ? 5 : -5) + (hasMoved ? 0 : 5)
+            let result = currentOrder[0] + (side === '>' ? 5 : -5)
             setCurrentOrder([result, true]);
             setHasMoved(true);
         }}>
