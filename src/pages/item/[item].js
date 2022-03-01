@@ -37,7 +37,7 @@ export default function Item({ background }) {
                     <div className={styles.exit} onClick={() => hideModal()}>
                         <svg width="1.5vw" height="1.5vw" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
                              className="ItemHeader__StyledIcon-sc-53k7ce-5 bzAeER">
-                            <path fill-rule="evenodd" clip-rule="evenodd"
+                            <path fillRule="evenodd" clipRule="evenodd"
                             d="M6.052 4.352a1.202 1.202 0 10-1.7 1.7L10.3 12l-5.948 5.948a1.202 1.202 0 001.7 1.7L12 13.7l5.948 5.948a1.202
                             1.202 0 001.7-1.7L13.7 12l5.948-5.948a1.202 1.202 0 00-1.7-1.7L12 10.3 6.052 4.352z"
                             fill="currentColor"/>
