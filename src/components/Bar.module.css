@@ -22,10 +22,6 @@
     scroll-behavior: smooth;
 }
 
-.list::-webkit-scrollbar {
-    display: none;
-}
-
 .arrow {
     display: flex;
     position: absolute;

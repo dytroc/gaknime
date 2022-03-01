@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router';
 import { gaknimes } from 'constants/gaknimes';
 import { useMemo } from 'react';
-import ReactPlayer from 'react-player'
+import ReactPlayer from 'react-player';
 
 
 export default function Episode() {
@@ -10,11 +10,11 @@ export default function Episode() {
 
     const gaknime = useMemo(() => gaknimes.find((anime) => anime.id.toString() === item), [item]);
 
-    if (!gaknime) return <div />;
+    if (!gaknime) return <div/>;
 
     return <div>
         <ReactPlayer
-            url={"https://youtu.be/" + gaknime.episodes[episode - 1].code}
+            url={'https://youtu.be/' + gaknime.episodes[episode - 1].code}
             autoplay
             controls
             style={{
@@ -30,7 +30,7 @@ export default function Episode() {
             pip={false}
 
             onEnded={() => {
-                router.push({ pathname: `/item/${item}/${Number(episode) < gaknime.episodes.length ? Number(episode) + 1 : ''}` } )
+                router.push({ pathname: `/item/${item}/${Number(episode) < gaknime.episodes.length ? Number(episode) + 1 : ''}` });
             }}
         />
         <div id="back" style={{
@@ -41,8 +41,8 @@ export default function Episode() {
             top: 0,
             zIndex: 10,
             height: '25vh',
-            cursor: 'pointer'
-        }} onClick={() => router.push({ pathname: '/' })}>
+            cursor: 'pointer',
+        }} onClick={() => router.push('/item/' + item)}>
             <div id="back-button" style={{
                 position: 'fixed',
                 zIndex: 10,
@@ -50,8 +50,9 @@ export default function Episode() {
                 fontWeight: 'bold',
                 fontSize: '2.5vw',
                 top: '1vh',
-                textShadow: '0 0 0.25vw black'
-            }}>뒤로 돌아가기</div>
+                textShadow: '0 0 0.25vw black',
+            }}>뒤로 돌아가기
+            </div>
         </div>
     </div>;
 }

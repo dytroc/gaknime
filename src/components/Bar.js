@@ -1,7 +1,6 @@
-import styles from './Bar.module.css';
+import styles from 'components/Bar.module.css';
 import GaknimeItem from 'components/GaknimeItem';
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { gaknimes } from 'constants/gaknimes';
 
 export default function Bar({ title, items }) {
 
@@ -34,13 +33,13 @@ export default function Bar({ title, items }) {
     }, []);
 
     useEffect(() => {
-        if (!currentOrder[1]) return
+        if (!currentOrder[1]) return;
         const timeout = setTimeout(() => {
 
             if (!order.has(-1)) {
-                setCurrentOrder(current => [current[0] + 6, false])
+                setCurrentOrder(current => [current[0] + 6, false]);
                 for (let i = 1; i <= 6; i++) {
-                    order.set(-i, items[items.length - i])
+                    order.set(-i, items[items.length - i]);
                 }
             } else {
                 let result = currentOrder[0];
@@ -51,44 +50,43 @@ export default function Bar({ title, items }) {
                 } else if (result >= order.size - 10) {
                     result -= items.length;
                 }
-                setCurrentOrder([result, false])
+                setCurrentOrder([result, false]);
             }
 
             setIsMoving(false);
         }, 1200);
 
-        return () => clearTimeout(timeout)
-    }, [currentOrder])
+        return () => clearTimeout(timeout);
+    }, [currentOrder]);
 
-    return !order.size ? <div /> : <div className={styles.bar}>
+    return !order.size ? <div/> : <div className={styles.bar}>
         <div className={styles.title}>{title}</div>
         <div className={styles.list} ref={listRef}>
-            {hasMoved && <Arrow side='<' style={{
+            {hasMoved && <Arrow side="<" style={{
                 left: 0,
                 borderBottomRightRadius: '0.35vw',
                 borderTopRightRadius: '0.35vw',
-            }} />}
+            }}/>}
             {Array.from(order).map(([index, gaknime]) => <GaknimeItem
-                gaknime={gaknime} order={index} currentOrder={currentOrder[0]} key={index}
-                transitionDisplayed={currentOrder[1]} tilted
+                gaknime={gaknime} order={index} currentOrder={currentOrder} key={index} tilted
             />)}
-            {order.size > 5 && <Arrow side='>' style={{
+            {order.size > 5 && <Arrow side=">" style={{
                 right: 0,
                 borderBottomLeftRadius: '0.35vw',
                 borderTopLeftRadius: '0.35vw',
-            }} />}
+            }}/>}
         </div>
-    </div>
+    </div>;
 
     function Arrow({ side, style, additionalClass = '' }) {
         return (<div className={styles.arrow + additionalClass} style={style} onClick={() => {
-            if (isMoving) return
+            if (isMoving) return;
             setIsMoving(true);
-            let result = currentOrder[0] + (side === '>' ? 5 : -5)
+            let result = currentOrder[0] + (side === '>' ? 5 : -5);
             setCurrentOrder([result, true]);
             setHasMoved(true);
         }}>
             {side}
-        </div>)
+        </div>);
     }
 }

@@ -1,0 +1,66 @@
+@import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
+
+@font-face {
+    font-family: 'ONE-Mobile-POP';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/ONE-Mobile-POP.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+html,
+body {
+    height: 92vh;
+    width: 100%;
+    background: #f8f8f8;
+    padding: 0;
+    margin: 0;
+    font-family: 'Noto Sans KR', sans-serif, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+
+html::-webkit-scrollbar {
+    display: none;
+}
+
+a {
+    color: #188aec;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+#gaknime-app {
+    height: 92vh;
+    margin-top: 8vh;
+}
+
+* {
+    box-sizing: border-box;
+
+    user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -webkit-user-select: none;
+}
+
+#back div {
+    transform: translateY(-110%);
+    transition: transform 0.5s;
+}
+
+#back:hover div,
+#back-botton:hover {
+    transform: translateY(0%);
+    display: block;
+}
+
+.unscrolled:hover {
+    color: #bbbbbb !important;
+    text-shadow: none !important;
+}
+
+.scrolled:hover {
+    color: #cccc00 !important;
+}
