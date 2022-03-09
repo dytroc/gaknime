@@ -8,15 +8,17 @@ export default function Episode() {
     const router = useRouter();
     const { item, episode } = router.query;
 
+    const safetyGuidance = router.query.safety === 'on';
+
     const gaknime = useMemo(() => gaknimes.find((anime) => anime.id.toString() === item), [item]);
 
     if (!gaknime) return <div/>;
 
     return <div>
         <ReactPlayer
-            url={'https://youtu.be/' + gaknime.episodes[episode - 1].code}
-            autoplay
-            controls
+            url={safetyGuidance ? '/videos/safety.mp4' : 'https://youtu.be/' + gaknime.episodes[episode - 1].code}
+            autoPlay
+            controls={!safetyGuidance}
             style={{
                 position: 'fixed',
                 top: 0,
@@ -30,7 +32,8 @@ export default function Episode() {
             pip={false}
 
             onEnded={() => {
-                router.push({ pathname: `/item/${item}/${Number(episode) < gaknime.episodes.length ? Number(episode) + 1 : ''}` });
+                if (safetyGuidance) router.push(`/item/${item}/${episode}`)
+                else router.push({ pathname: `/item/${item}/${Number(episode) < gaknime.episodes.length ? Number(episode) + 1 : ''}` });
             }}
         />
         <div id="back" style={{

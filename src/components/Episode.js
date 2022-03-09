@@ -1,7 +1,17 @@
 import styles from 'components/Episode.module.css';
+import { useState } from 'react';
 
 export default function Episode({ episode, hideModal }) {
-    return <div className={styles.main} onClick={() => hideModal({ url: `/item/${episode.item_id}/${episode.number}` })}>
+    const [warpToSafetyVideo] = useState(() => {
+        return localStorage.getItem('safety') !== 'on';
+    });
+
+    return <div className={styles.main} onClick={() => hideModal({
+        url: `/item/${episode.item_id}/${episode.number}`,
+        q: warpToSafetyVideo ? {
+            safety: 'on',
+        } : {},
+    })}>
         <img
             className={styles.thumbnail}
             src={`https://img.youtube.com/vi/${episode.code}/${episode.hq_default ? 'hqdefault' : 'maxresdefault'}.jpg`}

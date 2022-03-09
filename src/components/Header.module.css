@@ -26,6 +26,8 @@
     cursor: pointer;
     color: black;
     font-size: 3vh;
+
+    margin-right: 4.5vh;
 }
 
 .logo:hover {
@@ -55,7 +57,7 @@
 }
 
 .links {
-    margin: 4.5vh;
+    margin: 2vh;
     color: black;
     font-weight: bold;
     font-size: 1.75vh;
