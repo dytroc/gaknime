@@ -15,6 +15,8 @@ export const bars = [
     },
     { catchphrase: '우리 학교도 이렇게 가르쳐줬으면 재밌었을텐데...', filter: gaknimes.filter((item) => item.genres.includes('교육')) },
     { catchphrase: '사실은 오래전부터 당신 같은 개발자를 기다려 왔다우', filter: gaknimes.filter((item) => item.genres.includes('개발')) },
+    { catchphrase: '라떼는... 이런 거 봤었어', filter: gaknimes.filter((item) => item.tags.includes('그 시절')) },
+    { catchphrase: '마크의 근본은 역시 야생이지', filter: gaknimes.filter((item) => item.genres.includes('야생')) },
 ];
 
 export function getRandomBars(count) {
