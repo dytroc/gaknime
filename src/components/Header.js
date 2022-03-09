@@ -36,6 +36,7 @@ export default function Header({ searchKeyword, setSearchKeyword }) {
             textShadow: `rgba(0, 0, 0, 0.2) 0 0 ${scrollY <= 100 ? '0.2vw' : 0}`,
         }} href="https://github.com/dytroInc/gaknime">소스코드</a>
 
+        {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
         <a className={styles.links + (scrollY <= 100 ? ' unscrolled' : ' scrolled')} style={{
             color: scrollY <= 100 ? 'white' : 'black',
             textShadow: `rgba(0, 0, 0, 0.2) 0 0 ${scrollY <= 100 ? '0.2vw' : 0}`,
