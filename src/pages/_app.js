@@ -1,3 +1,4 @@
+import 'styles/themes.css';
 import 'styles/globals.css';
 import Header from 'components/Header';
 import { useRouter } from 'next/router';
@@ -11,14 +12,18 @@ import Item from 'pages/item/[item]';
 export default function App({ Component, pageProps }) {
     const router = useRouter();
     const [background, setBackground] = useState(undefined);
+    const [darkMode, setDarkMode] = useState('off');
     const [searchKeyword, setSearchKeyword] = useState(undefined);
 
     useEffect(() => {
         document.body.style.overflow = router.route === '/item/[item]' ? 'hidden' : 'scroll';
     });
+    useEffect(() => {
+        setDarkMode(localStorage.getItem('dark'));
+    }, []);
 
-    return <GanimeContextWrapper overwrittingValues={{ setBackground }}>
-        <div id="gaknime-app">
+    return <GanimeContextWrapper overwrittingValues={{ setBackground, setDarkMode }}>
+        <div id="gaknime-app" className={darkMode === 'on' ? 'dark' : 'light'}>
             <Head>
                 <title>각프텔 - 각니메 스트리밍</title>
                 <meta name="description" content="각니메들을 손쉽게 플레이리스트로 스트리밍하세요."/>

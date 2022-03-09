@@ -20,7 +20,7 @@
     width: 3.5vw;
     height: 2vw;
 
-    background: #aaaaaa;
+    background: var(--checkbox-off-background);
     border-radius: 5vw;
 
     padding: 0.25vw;

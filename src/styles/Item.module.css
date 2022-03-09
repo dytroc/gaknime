@@ -25,7 +25,7 @@
     left: 17.5vw;
 
     border-radius: 0.5vw;
-    background-color: white;
+    background-color: var(--primary-color);
 
     overflow-y: scroll;
 
@@ -54,7 +54,7 @@
 .image {
     aspect-ratio: 16/9;
 
-    border: white solid 0.05vw;
+    border: var(--primary-color) solid 0.05vw;
     border-radius: 0.2vw;
     margin-left: 1%;
 
@@ -133,7 +133,7 @@
 
 .episodes {
     width: 60vw;
-    background: white;
+    background: var(--primary-color);
 
     margin-top: 1vw;
 
@@ -149,5 +149,5 @@
 
     margin-bottom: 1.5vw;
 
-    color: #3a2727;
+    color: var(--episode-title);
 }

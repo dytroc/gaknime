@@ -3,7 +3,6 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 
 export default function Header({ searchKeyword, setSearchKeyword }) {
-
     const [scrollY, setScrollY] = useState(200);
     const router = useRouter();
 
@@ -22,25 +21,27 @@ export default function Header({ searchKeyword, setSearchKeyword }) {
     }, [router.query.q]);
 
     return <div className={styles.header} style={{
-        background: scrollY <= 100 ? 'rgba(255, 255, 255, 0)' : 'rgb(255, 255, 255)',
-        boxShadow: scrollY <= 100 ? 'rgb(238, 238, 238) 0 0 0 0' : 'rgb(238, 238, 238) 0 0.2vh 0 0',
+        background: scrollY <= 100 && router.route === '/' ? 'rgba(255, 255, 255, 0)' : 'var(--primary-color)',
+        boxShadow: scrollY <= 100 && router.route === '/' ? 'var(--header-border) 0 0 0 0' : 'var(--header-border) 0 0.2vh 0 0',
     }}>
         {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
         <a style={{
-            color: scrollY <= 100 ? 'white' : 'black',
-            textShadow: `rgba(0, 0, 0, 0.4) 0 0 ${scrollY <= 100 ? '0.2vw' : 0}`,
+            color: scrollY <= 100 && router.route === '/' ? 'var(--primary-color)' : 'var(--primary-contrast-color)',
+            textShadow: `var(--text-shadow-color) 0 0 ${scrollY <= 100 && router.route === '/' ? '0.2vw' : 0}`,
         }} href="/" className={styles.logo}>GAKNIME</a>
 
-        <a className={styles.links + (scrollY <= 100 ? ' unscrolled' : ' scrolled')} style={{
-            color: scrollY <= 100 ? 'white' : 'black',
-            textShadow: `rgba(0, 0, 0, 0.2) 0 0 ${scrollY <= 100 ? '0.2vw' : 0}`,
+        <a className={styles.links + (scrollY <= 100 && router.route === '/' ? ' unscrolled' : ' scrolled')} style={{
+            color: scrollY <= 100 && router.route === '/' ? 'var(--primary-color)' : 'var(--primary-contrast-color)',
+            textShadow: `var(--text-shadow-color) 0 0 ${scrollY <= 100 && router.route === '/' ? '0.2vw' : 0}`,
         }} href="https://github.com/dytroInc/gaknime">소스코드</a>
 
         {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
-        <a className={styles.links + (scrollY <= 100 ? ' unscrolled' : ' scrolled')} style={{
-            color: scrollY <= 100 ? 'white' : 'black',
-            textShadow: `rgba(0, 0, 0, 0.2) 0 0 ${scrollY <= 100 ? '0.2vw' : 0}`,
-        }} href="/settings">설정</a>
+        <div className={styles.links + (scrollY <= 100 && router.route === '/' ? ' unscrolled' : ' scrolled')} style={{
+            color: scrollY <= 100 && router.route === '/' ? 'var(--primary-color)' : 'var(--primary-contrast-color)',
+            textShadow: `var(--text-shadow-color) 0 0 ${scrollY <= 100 && router.route === '/' ? '0.2vw' : 0}`,
+        }} onClick={() => {
+            router.push('/settings');
+        }}>설정</div>
 
         <input
             className={styles.search}

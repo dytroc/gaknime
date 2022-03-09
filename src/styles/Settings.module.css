@@ -1,5 +1,8 @@
 .main {
     padding: 3vw 5vw;
+
+    background: var(--secondary-background-color);
+    height: 92vh;
 }
 
 .title {

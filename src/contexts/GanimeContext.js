@@ -2,6 +2,7 @@ import { createContext, useContext } from 'react';
 
 const defaultValue = {
     setBackground: (value) => {},
+    setDarkMode: (value) => {},
 };
 const GanimeContext = createContext(defaultValue);
 

@@ -24,7 +24,7 @@
     margin-left: 1vw;
 
     cursor: pointer;
-    color: black;
+    color: var(--primary-contrast-color);
     font-size: 3vh;
 
     margin-right: 4.5vh;
@@ -43,13 +43,19 @@
 
     font-size: 2vh;
 
-    border: 0.1vw solid #dddddd;
-    background: #ffffff;
+    border: 0.1vw solid var(--input-outline-color);
+    background: var(--primary-color);
 
     padding-left: 0.5vw;
     border-radius: 0.2vw;
 
     font-family: 'Noto Sans KR', sans-serif;
+
+    color: var(--input-color);
+}
+
+.search::placeholder {
+    color: var(--placeholder-color);
 }
 
 .search:focus {
@@ -58,7 +64,7 @@
 
 .links {
     margin: 2vh;
-    color: black;
+    color: var(--primary-contrast-color);
     font-weight: bold;
     font-size: 1.75vh;
 

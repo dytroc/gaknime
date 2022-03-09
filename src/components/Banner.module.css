@@ -21,7 +21,7 @@
 }
 
 .phrase {
-    color: white;
+    color: var(--primary-color);
     font-size: 2.5vw;
     font-weight: bold;
 
@@ -30,11 +30,11 @@
     bottom: 25%;
     left: 3%;
 
-    text-shadow: rgba(0, 0, 0, 0.4) 0 0 0.2vw
+    text-shadow: var(--text-shadow-color) 0 0 0.2vw
 }
 
 .watch {
-    color: black;
+    color: var(--primary-contrast-color);
     font-size: 1.3vw;
     font-weight: bold;
 
@@ -43,7 +43,7 @@
     bottom: 15%;
     left: 3%;
 
-    background: white;
+    background: var(--primary-color);
     width: 9vw;
     height: 3vw;
     line-height: 3vw;
