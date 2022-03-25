@@ -21,7 +21,7 @@ export default function Header({ searchKeyword, setSearchKeyword }) {
     }, [router.query.q]);
 
     return <div className={styles.header} style={{
-        background: scrollY <= 100 && router.route === '/' ? 'rgba(255, 255, 255, 0)' : 'var(--primary-color)',
+        background: scrollY <= 100 && router.route === '/' ? 'var(--primary-color-transparent)' : 'var(--primary-color)',
         boxShadow: scrollY <= 100 && router.route === '/' ? 'var(--header-border) 0 0 0 0' : 'var(--header-border) 0 0.2vh 0 0',
     }}>
         {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}

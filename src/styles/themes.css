@@ -1,5 +1,6 @@
 .light {
     --primary-color: #ffffff;
+    --primary-color-transparent: rgba(255, 255, 255, 0);
     --primary-contrast-color: #000000;
     --background-color: #ffffff;
     --secondary-background-color: #f8f8f8;
@@ -24,6 +25,7 @@
 
 .dark {
     --primary-color: #111111;
+    --primary-color-transparent: rgba(17, 17, 17, 0);
     --primary-contrast-color: #ffffff;
     --background-color: #262626;
     --secondary-background-color: #1e1e1e;
