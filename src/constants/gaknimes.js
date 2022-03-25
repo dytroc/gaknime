@@ -154,6 +154,7 @@ export const gaknimes = [
             { title: '케이크 만드는 거 방해하지 말아줄래?', code: '_SidjuAntpA' },
             { title: '케이크 제발 좀 만들게 해줄래?', code: 'KaHcwTMRpbI' },
             { title: '농장 만드는 거 도와줄래?', code: 'ZiSL5-0mdKs' },
+            { title: '경제적인 여유를 가진 사람들에게 돈 더 받을 수 있어?', code: 'LSzwtXM6WFo' },
         ], '돈이 고픈 각별과 공룡. 그래서 후원을 받기로 하는데... 뭔가가 이상하다? 각별과 공룡의 익스트림 야생 챌린지!'
     ),
     new Gaknime(
