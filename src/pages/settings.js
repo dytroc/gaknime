@@ -5,12 +5,14 @@ import { useGanimeContext } from 'contexts/GanimeContext';
 
 export default function Settings() {
     const [safetyVideoDisabled, setSafetyVideoDisabled] = useState('off');
+    const [adult, setAdult] = useState('off');
 
     const [dark, setDark] = useState('off')
     const { setDarkMode } = useGanimeContext();
 
     useEffect(() => {
         fill(setSafetyVideoDisabled, 'safety');
+        fill(setAdult, 'adult');
         fill(setDark, 'dark');
     }, []);
 
@@ -24,6 +26,10 @@ export default function Settings() {
         <div className={styles.category}>알림</div>
         <Checkbox label={'주의사항 영상 끄기'} value={safetyVideoDisabled === 'on'} setValue={(value) => {
             change(setSafetyVideoDisabled, 'safety', value)
+        }} />
+        <div className={styles.category}>시청 매체 설정</div>
+        <Checkbox label={'성인 이용가 시청 가능'} value={adult === 'on'} setValue={(value) => {
+            change(setAdult, 'adult', value)
         }} />
     </div>;
 

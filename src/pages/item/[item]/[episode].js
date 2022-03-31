@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router';
 import { gaknimes } from 'constants/gaknimes';
-import { useMemo } from 'react';
+import { useMemo, useState } from 'react';
 import ReactPlayer from 'react-player';
 
 
@@ -12,7 +12,21 @@ export default function Episode() {
 
     const gaknime = useMemo(() => gaknimes.find((anime) => anime.id.toString() === item), [item]);
 
+    const [isAdult] = useState(() => {
+        if (typeof window === 'undefined') return false;
+        return localStorage.getItem('adult') === 'on';
+    });
+
     if (!gaknime) return <div/>;
+    if (!isAdult) return <div style={{
+        fontSize: '2vw',
+        fontWeight: 'bold',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        textAlign: 'center',
+        height: '75vh'
+    }}>해당 각니메는 성인만 시청할 수 있습니다.<br/>설정에서 수정 가능합니다.</div>
 
     return <div>
         <ReactPlayer
