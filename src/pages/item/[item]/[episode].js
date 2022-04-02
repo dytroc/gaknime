@@ -2,7 +2,6 @@ import { useRouter } from 'next/router';
 import { gaknimes } from 'constants/gaknimes';
 import { useMemo, useState } from 'react';
 import ReactPlayer from 'react-player';
-import Link from 'next/link'
 
 
 export default function Episode() {
@@ -27,7 +26,7 @@ export default function Episode() {
         alignItems: 'center',
         textAlign: 'center',
         height: '75vh'
-    }}>해당 각니메는 성인만 시청할 수 있습니다.<br/><Link href="/settings">설정</Link>에서 수정 가능합니다.</div>
+    }}>해당 각니메는 성인만 시청할 수 있습니다.<br/>설정에서 수정 가능합니다.</div>
 
     return <div>
         <ReactPlayer
