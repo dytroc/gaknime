@@ -23,12 +23,11 @@ export default function Episode() {
         fontSize: '2vw',
         fontWeight: 'bold',
         display: 'flex',
-        flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
         textAlign: 'center',
         height: '75vh'
-    }}>해당 각니메는 성인만 시청할 수 있습니다.<span>만약에 시청이 가능한 나이일 경우, <Link href="/settings">설정</Link>에서 변경 가능합니다.</span></div>
+    }}>해당 각니메는 성인만 시청할 수 있습니다.<br/><Link href="/settings">설정</Link>에서 수정 가능합니다.</div>
 
     return <div>
         <ReactPlayer
