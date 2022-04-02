@@ -46,16 +46,7 @@ export default function Item({ background }) {
 
                     <div className={styles.basic}>
                         <div className={styles.title}>{gaknime.name}</div>
-                        <div className={styles.subheading}>
-                            <span>{gaknime.genres.join('·')}</span>
-                            <div style={{
-                                background: 'rgb(138, 138, 138)',
-                                height: '1vw',
-                                width: '0.05vw',
-                                margin: '0 0.5vw'
-                            }} />
-                            <span>성인 이용가</span>
-                        </div>
+                        <div className={styles.genre}>{gaknime.genres.join('·')}</div>
                     </div>
 
                     <div className={styles.description}>{gaknime.description}</div>

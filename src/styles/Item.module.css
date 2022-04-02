@@ -111,14 +111,7 @@
     padding-top: 25vw;
 }
 
-.subheading {
-    display: flex;
-    flex-direction: row;
-
-    align-items: center;
-    vertical-align: middle;
-    height: 1.5vw;
-
+.genre {
     color: #cccccc;
 
     margin-top: 0.75vw;
