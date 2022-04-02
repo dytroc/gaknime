@@ -72,8 +72,6 @@
 
     transition-duration: 0.4s;
     transition-property: color, text-shadow;
-
-    cursor: pointer;
 }
 
 .links:hover {
