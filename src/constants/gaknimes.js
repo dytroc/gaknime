@@ -155,6 +155,8 @@ export const gaknimes = [
             { title: '케이크 제발 좀 만들게 해줄래?', code: 'KaHcwTMRpbI' },
             { title: '농장 만드는 거 도와줄래?', code: 'ZiSL5-0mdKs' },
             { title: '경제적인 여유를 가진 사람들에게 돈 더 받을 수 있어?', code: 'LSzwtXM6WFo' },
+            { title: '돈으로 한 번 맞아볼래?', code: 'nm8Bdvons8I' },
+            { title: '이번에 드래곤을 잡을 수가 있었어?', code: 'oRH_qPuwjo8' },
         ], '돈이 고픈 각별과 공룡. 그래서 후원을 받기로 하는데... 뭔가가 이상하다? 각별과 공룡의 익스트림 야생 챌린지!'
     ),
     new Gaknime(
@@ -317,6 +319,10 @@ export const gaknimes = [
             { title: '이 야생에 최적화를!', code: 'Z7x9e7c2fLo' },
             { title: '이 야생에 환경법을!', code: 'fmB2YnCz6xE' },
             { title: '이 야생에 용암을!', code: 'QE_FD2oRhWc' },
+            { title: '이 야생에 돼지 탑승자를!', code: 'mJ_JAMeNMng' },
+            { title: '이 야생에 혼란을!', code: 'PDcyGYJ346Y' },
+            { title: '이 야생에 화살 이동을!', code: 'TcCNoUehy-o' },
+            { title: '이 야생에 순서를!', code: 'NOhjYY9GWTs' },
         ], '마인크래프트를 사랑하는 플러그인 개발자 청년, 각별에게는 야생이 너무나도 쉬웠다. 그런 그에게 제약을 걸어, 야생을 하라는 신의 말의 따라 제약을 하게되는데...'
     ),
     new Gaknime(
