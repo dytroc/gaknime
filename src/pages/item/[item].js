@@ -66,9 +66,9 @@ export default function Item({ background }) {
     </>;
 
     function hideModal(location = background) {
-        setBackground(undefined);
         const query = {};
         if (location.q) query.q = location.q;
+        setBackground(undefined);
         router.push(location ? { pathname: location.url, query } : '/', undefined, { scroll: false }).then();
     }
 }
