@@ -6,11 +6,15 @@ import GaknimeItem from 'components/GaknimeItem';
 
 export default function Search({ overrideWord }) {
     const router = useRouter();
-    const word = overrideWord || router.query.q;
+    const word = overrideWord ? (overrideWord.q || overrideWord) : router.query.q;
 
+    const items = useMemo(() => {
+        const searchFor = (word ?? '').replace(/ /, '');
 
-    const items = useMemo(() => gaknimes.filter((anime) => (anime.name || '').replace(/ /, '').includes((word || '').replace(/ /, '')))
-        .sort((a, b) => a.length - b.length), [word]);
+        return gaknimes.filter((anime) =>
+            ((anime.name || '').replace(/ /, '')).includes(searchFor)
+        ).sort((a, b) => a.length - b.length);
+    }, [word]);
 
 
     if (!items) return (<div/>); else if (!items.length) return <div className={styles.not_found}>

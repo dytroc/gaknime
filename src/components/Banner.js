@@ -14,7 +14,7 @@ export default function Banner({ banner }) {
         <div className={styles.phrase}>{banner.catchphrase}</div>
 
         <div onClick={() => {
-            setBackground({ url: router.route, q: router.query.q });
+            setBackground({ url: router.route, q: { q: router.query.q } });
             router.push('/item/' + gaknimes.find((gaknime) => gaknime.name === banner.item).id, undefined, { scroll: false }).then();
         }} className={styles.watch}>
             지금 보러가기

@@ -11,7 +11,7 @@ export default function GaknimeItem(
 
     return <GanimeContextWrapper>
         <div onClick={() => {
-            setBackground({ url: router.route, q: router.query.q });
+            setBackground({ url: router.route, q: { q: router.query.q } });
             router.push('/item/' + gaknime.id, undefined, { scroll: false }).then();
         }} className={styles.item} key={gaknime.title} style={{
             transition: currentOrder[1] ? 'transform 1.2s' : 'none',
