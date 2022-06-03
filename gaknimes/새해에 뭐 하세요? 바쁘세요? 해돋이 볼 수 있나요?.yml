@@ -1,0 +1,20 @@
+id: 5
+title: 새해에 뭐 하세요? 바쁘세요? 해돋이 볼 수 있나요?
+description:
+  새해가 되면 해의 첫 해돋이를 보라고 많은 사람들은 노력하지. 근데, 게임에서도 보지 말라는 법은 없잖아? 게임에서
+  실제로 해가 뜨는 마법같은 해돋이!
+thumbnail: 8Hi1Kprk5m8
+tags:
+  - 시참
+genres:
+  - 야생
+episodes:
+  - title: 2020년
+    code: ObciwqTSnNk
+    noPrefix: true
+  - title: 2021년
+    code: 8Hi1Kprk5m8
+    noPrefix: true
+  - title: 2022년
+    code: DGZbQnZGi-w
+    noPrefix: true

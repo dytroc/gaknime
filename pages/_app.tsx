@@ -1,7 +1,13 @@
-import '../styles/globals.css'
-import type { AppProps } from 'next/app'
+import "../styles/globals.scss"
+import type { AppProps } from "next/app"
+import React from "react"
+import "swiper/css/bundle"
 
-function MyApp({ Component, pageProps }: AppProps) {
+const MyApp = ({ Component, pageProps }: AppProps) => {
+  React.useEffect(() => {
+    document.body.classList.add("theme-light")
+  })
+
   return <Component {...pageProps} />
 }
 
