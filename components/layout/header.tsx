@@ -39,6 +39,23 @@ const Logo = styled.a`
   color: var(--primary-contrast-color);
 `
 
+const SearchInput = styled.input`
+  padding: 8px;
+  font-size: 16px;
+  border-radius: 4px;
+  outline: none;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  width: 100%;
+
+  @media screen and (max-width: 768px) {
+    position: fixed;
+    left: 50%;
+    transform: translate(-50%, 100%);
+    max-width: 300px;
+    z-index: 1000;
+  }
+`
+
 export const Header: React.FC = () => {
   const [scrollY, setScrollY] = React.useState(200)
   const router = useRouter()
@@ -92,7 +109,7 @@ export const Header: React.FC = () => {
             e.preventDefault()
           }}
         >
-          <input
+          <SearchInput
             autoFocus
             onBlur={() => {
               setSearchOpen(false)
@@ -101,14 +118,6 @@ export const Header: React.FC = () => {
             placeholder="검색어 입력..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            style={{
-              padding: 8,
-              fontSize: 16,
-              borderRadius: 4,
-              outline: "none",
-              border: "1px solid rgba(0, 0, 0, 0.2)",
-              width: "100%",
-            }}
           />
         </form>
       )}
