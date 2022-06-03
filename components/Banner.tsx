@@ -288,7 +288,10 @@ export const Banner: React.FC<{ banners: BannerType[] }> = ({ banners }) => {
 
   return (
     <Root ref={(instance) => (containerRef.current = instance)}>
-      <StyledSwiper style={{ transform: `scale(${scale})` }}>
+      <StyledSwiper
+        autoplay={{ delay: 5000 }}
+        style={{ transform: `scale(${scale})` }}
+      >
         <Navigation />
         <Pagination />
         {banners.map((x, i) => (
