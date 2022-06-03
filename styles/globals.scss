@@ -15,10 +15,13 @@ body {
   background: var(--background-color);
   padding: 0;
   margin: 0;
+  user-select: none;
+}
+
+* {
   font-family: "Noto Sans KR", sans-serif, -apple-system, BlinkMacSystemFont,
     Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans,
     Helvetica Neue, sans-serif;
-  user-select: none;
 }
 
 div {
@@ -27,4 +30,8 @@ div {
 
 * {
   box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
 }
