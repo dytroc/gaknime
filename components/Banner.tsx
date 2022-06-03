@@ -10,23 +10,28 @@ const Root = styled.div`
   aspect-ratio: 2.5;
   overflow: hidden;
 
-  --swiper-navigation-size: 60px;
-
-  .swiper-button-next,
-  .swiper-button-prev {
-    &:not(:hover) {
-      color: rgba(255, 255, 255, 0.6) !important;
-    }
-
-    &:hover {
-      color: #fff;
-    }
+  @media screen and (max-width: 768px) {
+    aspect-ratio: unset;
+    height: 100vh;
   }
 `
 
 const Container = styled.div<{ directory: string }>`
   cursor: pointer;
   aspect-ratio: 2.5;
+  @media screen and (max-width: 768px) {
+    aspect-ratio: unset;
+    height: 100%;
+    width: 100%;
+
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: center;
+
+    gap: 24px;
+
+    padding: 24px;
+  }
   width: 3200px;
   background-image: url(/banners/${({ directory }) => directory}/banner.png);
   background-size: cover;
@@ -40,6 +45,13 @@ const Logo = styled.img`
   left: 2%;
   width: 45%;
   user-select: none;
+
+  @media screen and (max-width: 768px) {
+    position: static;
+    left: unset;
+    top: unset;
+    width: 100%;
+  }
 `
 
 const Phrase = styled.div`
@@ -54,6 +66,11 @@ const Phrase = styled.div`
   left: 3%;
 
   text-shadow: var(--text-shadow-color) 0 0 0.2vw;
+
+  @media screen and (max-width: 768px) {
+    position: static;
+    font-size: 6vw;
+  }
 `
 
 const WatchButton = styled.div`
@@ -77,6 +94,15 @@ const WatchButton = styled.div`
   &:hover {
     background: #ccc;
   }
+
+  @media screen and (max-width: 768px) {
+    position: static;
+    font-size: 4vw;
+    width: fit-content;
+    height: fit-content;
+    line-height: normal;
+    padding: 12px;
+  }
 `
 
 const Navigation: React.FC = () => {
@@ -91,7 +117,7 @@ const Navigation: React.FC = () => {
     return () => {
       swiper.off("slideChange", callback)
     }
-  }, [swiper])
+  }, [swiper, update])
 
   return (
     <div className="container">
@@ -109,11 +135,27 @@ const Navigation: React.FC = () => {
           pointer-events: none;
         }
 
+        @media screen and (max-width: 768px) {
+          .container {
+            height: fit-content;
+            bottom: 24px;
+            padding: 0 12px;
+            top: auto;
+          }
+
+          .icon {
+            width: 24px !important;
+            height: 24px !important;
+          }
+        }
+
         .icon {
           pointer-events: auto;
           color: rgba(255, 255, 255, 0.6);
           transition: all ease 0.2s;
           cursor: pointer;
+          width: 60px;
+          height: 60px;
         }
 
         .icon:hover {
@@ -127,7 +169,7 @@ const Navigation: React.FC = () => {
             swiper.slidePrev()
           }}
         >
-          <FaChevronLeft size={60} />
+          <FaChevronLeft size="100%" />
         </div>
       )) || <div />}
       {(!swiper.isEnd && (
@@ -137,7 +179,7 @@ const Navigation: React.FC = () => {
           }}
           className="icon"
         >
-          <FaChevronRight size={60} />
+          <FaChevronRight size="100%" />
         </div>
       )) || <div />}
     </div>
@@ -156,7 +198,7 @@ const Pagination: React.FC = () => {
     return () => {
       swiper.off("slideChange", callback)
     }
-  }, [swiper])
+  }, [swiper, update])
 
   return (
     <div className="container">
@@ -170,6 +212,19 @@ const Pagination: React.FC = () => {
           pointer-events: none;
           bottom: 48px;
           right: 48px;
+        }
+
+        @media screen and (max-width: 768px) {
+          .dot {
+            width: 16px !important;
+            height: 16px !important;
+          }
+          .container {
+            gap: 12px !important;
+            left: 48px !important;
+            right: auto !important;
+            bottom: 28px;
+          }
         }
 
         .dot {
@@ -200,6 +255,19 @@ const Pagination: React.FC = () => {
   )
 }
 
+const StyledSwiper = styled(Swiper)`
+  width: 3200px;
+  height: 1280px;
+  transform-origin: left top;
+
+  @media screen and (max-width: 768px) {
+    aspect-ratio: unset;
+    height: 100vh;
+    width: 100vw;
+    transform: scale(1) !important;
+  }
+`
+
 export const Banner: React.FC<{ banners: BannerType[] }> = ({ banners }) => {
   const [scale, setScale] = React.useState(0)
   const containerRef = React.useRef<HTMLDivElement | null>(null)
@@ -216,18 +284,11 @@ export const Banner: React.FC<{ banners: BannerType[] }> = ({ banners }) => {
         observer.disconnect()
       }
     }
-  }, [setScale, containerRef.current])
+  }, [setScale])
 
   return (
     <Root ref={(instance) => (containerRef.current = instance)}>
-      <Swiper
-        style={{
-          transform: `scale(${scale})`,
-          width: 3200,
-          height: 1280,
-          transformOrigin: "left top",
-        }}
-      >
+      <StyledSwiper style={{ transform: `scale(${scale})` }}>
         <Navigation />
         <Pagination />
         {banners.map((x, i) => (
@@ -236,13 +297,13 @@ export const Banner: React.FC<{ banners: BannerType[] }> = ({ banners }) => {
               directory={x.directory}
               onClick={() => console.log("sans")}
             >
-              <Logo src={`/banners/${x.directory}/logo.png`} />
-              <Phrase>{x.catchPhrase}</Phrase>
               <WatchButton>지금 보러가기</WatchButton>
+              <Phrase>{x.catchPhrase}</Phrase>
+              <Logo src={`/banners/${x.directory}/logo.png`} />
             </Container>
           </SwiperSlide>
         ))}
-      </Swiper>
+      </StyledSwiper>
     </Root>
   )
 }
