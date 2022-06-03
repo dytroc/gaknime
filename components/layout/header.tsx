@@ -107,6 +107,11 @@ export const Header: React.FC = () => {
           }}
           onSubmit={(e) => {
             e.preventDefault()
+            router
+              .push({ pathname: "/search", query: { q: searchTerm } })
+              .then(() => {
+                setScrollY(200)
+              })
           }}
         >
           <SearchInput
