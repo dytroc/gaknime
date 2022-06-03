@@ -140,12 +140,21 @@ export const Header: React.FC = () => {
               setSearchOpen(true)
             }}
             style={{ cursor: "pointer" }}
-            color="var(--primary-color)"
+            color={
+              scrollY <= 100 && isAbsolute
+                ? "var(--primary-color)"
+                : "var(--primary-contrast-color)"
+            }
             size={24}
           />
         )}
         <a
-          style={{ color: "var(--primary-color)" }}
+          style={{
+            color:
+              scrollY <= 100 && isAbsolute
+                ? "var(--primary-color)"
+                : "var(--primary-contrast-color)",
+          }}
           href="https://github.com/dytroinc/gaknime"
           target="_blank"
           rel="noreferrer"
@@ -153,7 +162,14 @@ export const Header: React.FC = () => {
           <FaGithub size={24} />
         </a>
         <Link href="/settings">
-          <a style={{ color: "var(--primary-color)" }}>
+          <a
+            style={{
+              color:
+                scrollY <= 100 && isAbsolute
+                  ? "var(--primary-color)"
+                  : "var(--primary-contrast-color)",
+            }}
+          >
             <FaCog size={24} />
           </a>
         </Link>

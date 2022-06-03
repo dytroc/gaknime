@@ -4,6 +4,7 @@ import styled from "styled-components"
 import { Swiper, SwiperSlide, useSwiper } from "swiper/react"
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa"
 import { useForceRefresh } from "lib/hooks"
+import { Autoplay } from "swiper"
 
 const Root = styled.div`
   position: relative;
@@ -289,6 +290,7 @@ export const Banner: React.FC<{ banners: BannerType[] }> = ({ banners }) => {
   return (
     <Root ref={(instance) => (containerRef.current = instance)}>
       <StyledSwiper
+        modules={[Autoplay]}
         autoplay={{ delay: 5000 }}
         style={{ transform: `scale(${scale})` }}
       >
