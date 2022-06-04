@@ -1,6 +1,7 @@
 import { loadGaknimes } from "lib/data"
 import { Gaknime } from "lib/types"
 import { GetStaticPaths, GetStaticProps, NextPage } from "next"
+import Head from "next/head"
 import { useRouter } from "next/router"
 import React from "react"
 
@@ -11,7 +12,14 @@ const ItemPage: NextPage<PageProps> = ({ gaknime }) => {
     router.push(`/?itemId=${gaknime.id}`, `/item/${gaknime.id}`)
   }, [gaknime.id, router])
 
-  return <div />
+  return (
+    <div>
+      <Head>
+        <title>{gaknime.title}</title>
+        <meta property="og:description" content={gaknime.description} />
+      </Head>
+    </div>
+  )
 }
 
 export default ItemPage
