@@ -8,6 +8,7 @@ import { FaChevronLeft, FaChevronRight } from "react-icons/fa"
 import styled from "styled-components"
 import { FreeMode, Pagination } from "swiper"
 import { Swiper, SwiperSlide, useSwiper } from "swiper/react"
+import { GaknimeItem } from "./GaknimeItem"
 
 const Container = styled.div`
   margin-top: 64px;
@@ -20,30 +21,6 @@ const Label = styled.div`
   font-size: 24px;
   font-weight: 700;
 `
-
-const CategoryItem: React.FC<{ gaknime: Gaknime }> = ({ gaknime }) => {
-  const router = useRouter()
-  return (
-    <Link
-      scroll={false}
-      href={`${router.pathname}?itemId=${gaknime.id}`}
-      as={`/item/${gaknime.id}`}
-    >
-      <a>
-        <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src={`https://i.ytimg.com/vi/${gaknime.thumbnail}/original.jpg`}
-            alt="Thumbnail"
-            width={240}
-            style={{ borderRadius: 6 }}
-          />
-          <div style={{ fontSize: 16, width: 240 }}>{gaknime.title}</div>
-        </div>
-      </a>
-    </Link>
-  )
-}
 
 const StyledSwiper = styled(Swiper)`
   width: calc(100% + 96px);
@@ -143,7 +120,7 @@ export const GaknimeCategory: React.FC<{
         <Navigation />
         {looped.map((x, i) => (
           <SwiperSlide key={i} style={{ width: 240 }}>
-            <CategoryItem gaknime={x} />
+            <GaknimeItem gaknime={x} />
           </SwiperSlide>
         ))}
       </StyledSwiper>

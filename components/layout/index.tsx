@@ -9,6 +9,22 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({
 }) => {
   const router = useRouter()
 
+  const closeModal = () => {
+    const query = router.query
+    delete query.itemId
+
+    router.push(
+      `${router.route}?${new URLSearchParams(query as Record<string, string>)}`,
+      `${router.pathname}?${new URLSearchParams(
+        query as Record<string, string>
+      )}`,
+      {
+        shallow: true,
+        scroll: false,
+      }
+    )
+  }
+
   return (
     <div
       style={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}
@@ -18,18 +34,12 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({
       <Overlay
         open={!!router.query.itemId}
         close={() => {
-          router.push(router.pathname, router.pathname, {
-            shallow: true,
-            scroll: false,
-          })
+          closeModal()
         }}
       >
         <GaknimeModal
           close={() => {
-            router.push(router.pathname, router.pathname, {
-              shallow: true,
-              scroll: false,
-            })
+            closeModal()
           }}
           id={router.query.itemId as string}
         />

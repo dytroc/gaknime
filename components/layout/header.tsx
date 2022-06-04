@@ -60,6 +60,12 @@ export const Header: React.FC = () => {
   const [scrollY, setScrollY] = React.useState(200)
   const router = useRouter()
 
+  React.useEffect(() => {
+    if (router.query.q) {
+      setSearchTerm(router.query.q as string)
+    }
+  }, [router.query])
+
   const isAbsolute = absolute.includes(router.pathname)
 
   const [searchOpen, setSearchOpen] = React.useState(false)
