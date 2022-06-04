@@ -5,6 +5,7 @@ import "swiper/css/bundle"
 import { Layout } from "components/layout"
 import { AppContext } from "components/AppContext"
 import { Gaknime } from "lib/types"
+import Head from "next/head"
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
   const [darkMode, setDarkMode] = React.useState(
@@ -57,6 +58,10 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
         gaknimes,
       }}
     >
+      <Head>
+        <title>각프텔 - 각니메 스트리밍</title>
+        <link rel="icon" href="/favicon.png" />
+      </Head>
       {(gaknimes.length && (
         <Layout>
           <Component {...pageProps} />

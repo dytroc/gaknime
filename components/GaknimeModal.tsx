@@ -1,4 +1,5 @@
 import { useGaknimes } from "lib/client"
+import Head from "next/head"
 import React from "react"
 import { MdClose } from "react-icons/md"
 import styled from "styled-components"
@@ -45,6 +46,9 @@ export const GaknimeModal: React.FC<{ id: string; close: () => void }> = ({
 
   return (
     <Container>
+      <Head>
+        <title>{gaknime.title} - 각프텔</title>
+      </Head>
       <div
         style={{
           background: "var(--episode-title)",

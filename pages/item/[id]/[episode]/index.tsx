@@ -4,6 +4,7 @@ import { motion } from "framer-motion"
 import { useGaknimes } from "lib/client"
 import { Episode } from "lib/types"
 import _ from "lodash"
+import Head from "next/head"
 import Link from "next/link"
 import Router, { useRouter } from "next/router"
 import React from "react"
@@ -201,6 +202,9 @@ const EpisodePlayer: React.FC = () => {
 
   return (
     <Container ref={containerRef}>
+      <Head>
+        <title>{gaknime.title} 다시보기 - 각프텔</title>
+      </Head>
       <Overlay>
         <Link
           href={`/?itemId=${router.query.id}`}
