@@ -118,6 +118,7 @@ export const GaknimeCategory: React.FC<{
         style={{ position: "relative" }}
       >
         <Navigation />
+        {!looped.length && <SwiperSlide></SwiperSlide>}
         {looped.map((x, i) => (
           <SwiperSlide key={i} style={{ width: 240 }}>
             <GaknimeItem gaknime={x} />
