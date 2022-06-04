@@ -80,7 +80,9 @@ export const Header: React.FC = () => {
     <Container
       isAbsolute={isAbsolute}
       style={{
-        background: scrollY <= 100 && isAbsolute ? "transparent" : "#fff",
+        background:
+          scrollY <= 100 && isAbsolute ? "transparent" : "var(--primary-color)",
+        transition: "all ease .2s",
       }}
     >
       <Link href="/" passHref>

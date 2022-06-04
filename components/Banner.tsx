@@ -56,7 +56,7 @@ const Logo = styled.img`
 `
 
 const Phrase = styled.div`
-  color: var(--primary-color);
+  color: #fff;
 
   font-size: 80px;
   font-weight: bold;
@@ -75,7 +75,7 @@ const Phrase = styled.div`
 `
 
 const WatchButton = styled.div`
-  color: var(--primary-contrast-color);
+  color: #000;
   font-size: 41.6px;
   font-weight: bold;
 
@@ -84,7 +84,7 @@ const WatchButton = styled.div`
   bottom: 15%;
   left: 3%;
 
-  background: var(--primary-color);
+  background: #fff;
   width: 288px;
   height: 96px;
   line-height: 96px;
