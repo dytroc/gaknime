@@ -42,67 +42,71 @@ const Overlay: React.FC<
       | ((props: { close: () => void }) => React.ReactNode)
   }
 > = ({ children, open: openProp, style, close }) => {
-  return (
-    <>
-      <Portal>
-        <AnimatePresence>
-          {(openProp ?? open) && (
-            <motion.div
-              initial={{
-                opacity: 0,
-              }}
-              animate={{
-                opacity: 1,
-              }}
-              exit={{
-                opacity: 0,
-              }}
-              transition={{
+  const content = (
+    <AnimatePresence>
+      {(openProp ?? open) && (
+        <motion.div
+          initial={{
+            opacity: 0,
+          }}
+          animate={{
+            opacity: 1,
+          }}
+          exit={{
+            opacity: 0,
+          }}
+          transition={{
+            type: "tween",
+          }}
+          style={{ zIndex: 99999, position: "relative" }}
+        >
+          <Backdrop
+            onClick={() => {
+              close?.()
+            }}
+          />
+          <motion.div
+            initial={{
+              translateX: "-50%",
+              translateY: "-50%",
+              y: -80,
+            }}
+            animate={{
+              y: 0,
+              transition: {
                 type: "tween",
-              }}
-              style={{ zIndex: 99999, position: "relative" }}
-            >
-              <Backdrop
-                onClick={() => {
-                  close?.()
-                }}
-              />
-              <motion.div
-                initial={{
-                  translateX: "-50%",
-                  translateY: "-50%",
-                  y: -80,
-                }}
-                animate={{
-                  y: 0,
-                  transition: {
-                    type: "tween",
-                  },
-                }}
-                exit={{
-                  y: 80,
-                  transition: {
-                    type: "tween",
-                  },
-                }}
-                style={{
-                  position: "fixed",
-                  left: "50%",
-                  top: "50%",
-                  transform: `translate(-50%, -50%)`,
-                  ...style,
-                }}
-              >
-                {typeof children === "function"
-                  ? children({ close: () => close?.() })
-                  : children}
-              </motion.div>
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </Portal>
-    </>
+              },
+            }}
+            exit={{
+              y: 80,
+              transition: {
+                type: "tween",
+              },
+            }}
+            style={{
+              position: "fixed",
+              left: "50%",
+              top: "50%",
+              transform: `translate(-50%, -50%)`,
+              ...style,
+            }}
+          >
+            {typeof children === "function"
+              ? children({ close: () => close?.() })
+              : children}
+          </motion.div>
+        </motion.div>
+      )}
+    </AnimatePresence>
   )
+
+  const [ready, setReady] = React.useState(false)
+
+  React.useEffect(() => {
+    setReady(true)
+  }, [])
+
+  return ready ? <Portal>{content}</Portal> : content
 }
 
 export default Overlay

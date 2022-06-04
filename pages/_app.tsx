@@ -61,13 +61,13 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
       <Head>
         <title>각프텔 - 각니메 스트리밍</title>
         <link rel="icon" href="/favicon.png" />
+        <meta property="og:title" content="각프텔" />
+        <meta property="og:description" content="각니메 스트리밍" />
+        <meta property="og:image" content="/favicon.png" />
       </Head>
-      {(gaknimes.length && (
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
-      )) ||
-        null}
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
     </AppContext.Provider>
   )
 }

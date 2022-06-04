@@ -197,7 +197,9 @@ const EpisodePlayer: React.FC = () => {
   }, [])
 
   if (!gaknime || !episode) {
-    router.push("/")
+    if (typeof window !== "undefined") {
+      router.push("/")
+    }
 
     return null
   }
