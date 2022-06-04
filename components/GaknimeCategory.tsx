@@ -37,6 +37,7 @@ const CategoryItem: React.FC<{ gaknime: Gaknime }> = ({ gaknime }) => {
 const StyledSwiper = styled(Swiper)`
   width: calc(100% + 96px);
   transform: translateX(-48px);
+  padding-left: 64px;
 
   @media screen and (max-width: 768px) {
     width: calc(100% + 48px);
@@ -80,7 +81,9 @@ const Navigation: React.FC = () => {
       <BaseNavigationItem
         className="navigation-button"
         onClick={() => {
-          swiper.slidePrev()
+          swiper.slideTo(
+            swiper.activeIndex - Math.floor(window.innerWidth / 240) - 1
+          )
         }}
         style={{
           left: 0,
@@ -93,7 +96,9 @@ const Navigation: React.FC = () => {
       <BaseNavigationItem
         className="navigation-button"
         onClick={() => {
-          swiper.slideNext()
+          swiper.slideTo(
+            swiper.activeIndex + Math.floor(window.innerWidth / 240) - 1
+          )
         }}
         style={{
           right: 0,
@@ -111,18 +116,21 @@ export const GaknimeCategory: React.FC<{
   title: string
   gaknimes: Gaknime[]
 }> = ({ title, gaknimes }) => {
+  const looped = React.useMemo(() => {
+    return [...gaknimes, ...gaknimes, ...gaknimes, ...gaknimes, ...gaknimes]
+  }, [gaknimes])
+
   return (
     <Container>
       <Label>{title}</Label>
       <StyledSwiper
         loop
         slidesPerView="auto"
-        modules={[FreeMode]}
         spaceBetween={16}
         style={{ position: "relative" }}
       >
         <Navigation />
-        {gaknimes.map((x, i) => (
+        {looped.map((x, i) => (
           <SwiperSlide key={i} style={{ width: 240 }}>
             <CategoryItem gaknime={x} />
           </SwiperSlide>
