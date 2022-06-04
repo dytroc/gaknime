@@ -341,7 +341,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   const gaknimes = await loadGaknimes()
 
   for (const gaknime of gaknimes) {
-    out.push(...gaknime.episodes.map((x, i) => `/item/${gaknime.id}/${i}`))
+    out.push(...gaknime.episodes.map((x, i) => `/item/${gaknime.id}/${i + 1}`))
   }
 
   return {
