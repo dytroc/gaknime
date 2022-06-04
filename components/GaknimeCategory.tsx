@@ -1,6 +1,8 @@
 import { useForceRefresh } from "lib/hooks"
 import { Gaknime } from "lib/types"
 import _ from "lodash"
+import Link from "next/link"
+import { useRouter } from "next/router"
 import React from "react"
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa"
 import styled from "styled-components"
@@ -20,17 +22,26 @@ const Label = styled.div`
 `
 
 const CategoryItem: React.FC<{ gaknime: Gaknime }> = ({ gaknime }) => {
+  const router = useRouter()
   return (
-    <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img
-        src={`https://i.ytimg.com/vi/${gaknime.thumbnail}/original.jpg`}
-        alt="Thumbnail"
-        width={240}
-        style={{ borderRadius: 6 }}
-      />
-      <div style={{ fontSize: 16, width: 240 }}>{gaknime.title}</div>
-    </div>
+    <Link
+      scroll={false}
+      href={`${router.pathname}?itemId=${gaknime.id}`}
+      as={`/item/${gaknime.id}`}
+    >
+      <a>
+        <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={`https://i.ytimg.com/vi/${gaknime.thumbnail}/original.jpg`}
+            alt="Thumbnail"
+            width={240}
+            style={{ borderRadius: 6 }}
+          />
+          <div style={{ fontSize: 16, width: 240 }}>{gaknime.title}</div>
+        </div>
+      </a>
+    </Link>
   )
 }
 

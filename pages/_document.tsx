@@ -1,3 +1,4 @@
+import { loadGaknimes } from "lib/data"
 import Document, { DocumentContext, DocumentInitialProps } from "next/document"
 import { ServerStyleSheet } from "styled-components"
 

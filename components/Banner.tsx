@@ -5,6 +5,8 @@ import { Swiper, SwiperSlide, useSwiper } from "swiper/react"
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa"
 import { useForceRefresh } from "lib/hooks"
 import { Autoplay } from "swiper"
+import Link from "next/link"
+import { useRouter } from "next/router"
 
 const Root = styled.div`
   position: relative;
@@ -287,6 +289,8 @@ export const Banner: React.FC<{ banners: BannerType[] }> = ({ banners }) => {
     }
   }, [setScale])
 
+  const router = useRouter()
+
   return (
     <Root ref={(instance) => (containerRef.current = instance)}>
       <StyledSwiper
@@ -298,14 +302,22 @@ export const Banner: React.FC<{ banners: BannerType[] }> = ({ banners }) => {
         <Pagination />
         {banners.map((x, i) => (
           <SwiperSlide key={i}>
-            <Container
-              directory={x.directory}
-              onClick={() => console.log("sans")}
+            <Link
+              scroll={false}
+              href={`${router.pathname}?itemId=${x.gaknime.id}`}
+              as={`/item/${x.gaknime.id}`}
             >
-              <WatchButton>지금 보러가기</WatchButton>
-              <Phrase>{x.catchPhrase}</Phrase>
-              <Logo src={`/banners/${x.directory}/logo.png`} />
-            </Container>
+              <a>
+                <Container
+                  directory={x.directory}
+                  onClick={() => console.log("sans")}
+                >
+                  <WatchButton>지금 보러가기</WatchButton>
+                  <Phrase>{x.catchPhrase}</Phrase>
+                  <Logo src={`/banners/${x.directory}/logo.png`} />
+                </Container>
+              </a>
+            </Link>
           </SwiperSlide>
         ))}
       </StyledSwiper>

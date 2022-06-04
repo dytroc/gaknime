@@ -1,8 +1,10 @@
-import { readdir, readFile } from "fs/promises"
+import { readdir, readFile, writeFile } from "fs/promises"
 import { join } from "path"
 import { Banner, Gaknime } from "./types"
 import yaml from "yaml"
 import { z } from "zod"
+import React from "react"
+import { AppContext } from "components/AppContext"
 
 const episodeSchema = z.object({
   title: z.string(),
@@ -25,7 +27,12 @@ const bannerSchema = z.object({
   ref: z.number().int(),
 })
 
+let cachedGaknimes: Gaknime[]|null = null
+
 export const loadGaknimes = async (): Promise<Gaknime[]> => {
+  if (cachedGaknimes) {
+    return cachedGaknimes
+  }
   const root = join(process.cwd(), "gaknimes")
   const files = await readdir(root)
 
@@ -48,10 +55,18 @@ export const loadGaknimes = async (): Promise<Gaknime[]> => {
     }
   }
 
+  await writeFile(
+    join(process.cwd(), "public/gaknimes.json"),
+    JSON.stringify(output)
+  )
+
+  cachedGaknimes = output
+
   return output
 }
 
-export const loadBanners = async (gaknimes: Gaknime[]): Promise<Banner[]> => {
+export const loadBanners = async (): Promise<Banner[]> => {
+  const gaknimes = await loadGaknimes()
   const root = join(process.cwd(), "public", "banners")
   const files = await readdir(root)
 
@@ -80,3 +95,5 @@ export const loadBanners = async (gaknimes: Gaknime[]): Promise<Banner[]> => {
 
   return output
 }
+
+

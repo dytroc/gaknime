@@ -4,6 +4,7 @@ import React from "react"
 import "swiper/css/bundle"
 import { Layout } from "components/layout"
 import { AppContext } from "components/AppContext"
+import { Gaknime } from "lib/types"
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
   const [darkMode, setDarkMode] = React.useState(
@@ -12,6 +13,8 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
   const [hideWarn, setHideWarn] = React.useState(
     typeof window !== "undefined" ? !!localStorage.getItem("__hideWarn") : false
   )
+
+  const [gaknimes, setGaknimes] = React.useState<Gaknime[]>([])
 
   React.useEffect(() => {
     if (darkMode) {
@@ -22,6 +25,13 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
       document.body.classList.add("theme-light")
     }
   }, [darkMode])
+
+  React.useEffect(() => {
+    ;(async () => {
+      const json = await (await fetch("/gaknimes.json")).json()
+      setGaknimes(json)
+    })()
+  }, [])
 
   return (
     <AppContext.Provider
@@ -44,11 +54,15 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
             localStorage.removeItem("__hideWarn")
           }
         },
+        gaknimes,
       }}
     >
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
+      {(gaknimes.length && (
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+      )) ||
+        null}
     </AppContext.Provider>
   )
 }

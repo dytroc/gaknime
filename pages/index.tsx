@@ -5,16 +5,20 @@ import { Banner as BannerType, Gaknime } from "lib/types"
 import { Banner } from "components/Banner"
 import { GaknimeCategory, randomCategories } from "components/GaknimeCategory"
 import { Container } from "components/Container"
+import { writeFile } from "fs/promises"
+import { join } from "path"
+import { useGaknimes } from "lib/client"
 
 type PageProps = {
-  gaknimes: Gaknime[]
   banners: BannerType[]
 }
 
-const Home: NextPage<PageProps> = ({ gaknimes, banners }) => {
+const Home: NextPage<PageProps> = ({ banners }) => {
   const [categories, setCategories] = React.useState<
     ReturnType<typeof randomCategories>
   >([])
+
+  const gaknimes = useGaknimes()
 
   React.useEffect(() => {
     setCategories(randomCategories(gaknimes, 5))
@@ -33,12 +37,10 @@ const Home: NextPage<PageProps> = ({ gaknimes, banners }) => {
 }
 
 export const getStaticProps: GetStaticProps<PageProps> = async () => {
-  const gaknimes = await loadGaknimes()
-  const banners = await loadBanners(gaknimes)
+  const banners = await loadBanners()
 
   return {
     props: {
-      gaknimes,
       banners,
     },
   }
