@@ -308,10 +308,7 @@ export const Banner: React.FC<{ banners: BannerType[] }> = ({ banners }) => {
               as={`/item/${x.gaknime.id}`}
             >
               <a>
-                <Container
-                  directory={x.directory}
-                  onClick={() => console.log("sans")}
-                >
+                <Container directory={x.directory}>
                   <WatchButton>지금 보러가기</WatchButton>
                   <Phrase>{x.catchPhrase}</Phrase>
                   <Logo src={`/banners/${x.directory}/logo.png`} />
