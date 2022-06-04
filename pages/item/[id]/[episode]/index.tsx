@@ -277,13 +277,15 @@ const EpisodePlayer: React.FC = () => {
                 episode={nextEpisode}
               />
             )
-          })() || <ShowOthers />
+          })() || <ShowOthers play={() => {
+            setShowNext(false)
+          }} />
         : null}
     </Container>
   )
 }
 
-const ShowOthers: React.FC = () => {
+const ShowOthers: React.FC<{play: ()=>void}> = ({play}) => {
   const router = useRouter()
 
   const gaknimes = useGaknimes()
@@ -319,7 +321,12 @@ const ShowOthers: React.FC = () => {
                   gaknime={x}
                   textStyle={{ color: "#fff", fontSize: 16 }}
                   onClick={() => {
-                    console.log("play", x)
+                    router.push(
+                      `/item/[id]/[episode]`,
+                      `/item/${x.id}/1`,
+                      { shallow: true }
+                    )
+                    play()
                   }}
                 />
               </div>
