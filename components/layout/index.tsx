@@ -9,20 +9,22 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({
 }) => {
   const router = useRouter()
 
+  if (router.route === "/item/[id]/[episode]") {
+    return <>{children}</>
+  }
+
   const closeModal = () => {
     const query = router.query
     delete query.itemId
 
-    router.push(
-      `${router.route}?${new URLSearchParams(query as Record<string, string>)}`,
-      `${router.pathname}?${new URLSearchParams(
-        query as Record<string, string>
-      )}`,
-      {
-        shallow: true,
-        scroll: false,
-      }
-    )
+    const q = Object.keys(router.query).length
+      ? `?${new URLSearchParams(query as Record<string, string>)}`
+      : ""
+
+    router.push(`${router.route}${q}`, `${router.pathname}${q}`, {
+      shallow: true,
+      scroll: false,
+    })
   }
 
   return (
