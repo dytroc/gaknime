@@ -2,8 +2,10 @@ import { AppContext } from "components/AppContext"
 import { GaknimeItem } from "components/GaknimeItem"
 import { motion } from "framer-motion"
 import { useGaknimes } from "lib/client"
+import { loadGaknimes } from "lib/data"
 import { Episode } from "lib/types"
 import _ from "lodash"
+import { GetStaticPaths, GetStaticProps } from "next"
 import Head from "next/head"
 import Link from "next/link"
 import Router, { useRouter } from "next/router"
@@ -325,6 +327,25 @@ const ShowOthers: React.FC = () => {
       </div>
     </motion.div>
   )
+}
+
+export const getStaticProps: GetStaticProps = async () => {
+  return { props: {} }
+}
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  const out: string[] = []
+
+  const gaknimes = await loadGaknimes()
+
+  for (const gaknime of gaknimes) {
+    out.push(...gaknime.episodes.map((x, i) => `/item/${gaknime.id}/${i}`))
+  }
+
+  return {
+    paths: out,
+    fallback: false,
+  }
 }
 
 export default EpisodePlayer
