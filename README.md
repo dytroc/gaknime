@@ -11,6 +11,7 @@
 만약에 해당 프로젝트가 삭제되길 원한다면, 이 측에 속한다고 인증하시고 이슈를 달아주시길 바랍니다.
 
 # Gaknime
+
 An open-source fan website project of [각별](https://www.youtube.com/c/각별), which is also a parody of a South Korean anime platform [Laftel](https://laftel.net).
 
 Easily organize [각별](https://www.youtube.com/c/각별)'s videos into playlists with anime-like titles.
