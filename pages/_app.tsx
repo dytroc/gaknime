@@ -77,8 +77,9 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
         <title>각프텔 - 각니메 스트리밍</title>
         <link rel="icon" href="/favicon.png" />
         <meta property="og:title" content="각프텔" />
-        <meta property="og:description" content="각니메 스트리밍" />
+        <meta property="og:description" content="각니메들을 손쉽게 플레이리스트로 스트리밍하세요." />
         <meta property="og:image" content="/favicon.png" />
+        <meta name="theme-color" content="#eeee00"/>
       </Head>
       <Layout>
         <Component {...pageProps} />
