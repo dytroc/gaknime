@@ -1,12 +1,10 @@
-import React, { lazy } from "react"
+import React, {useEffect, useState} from "react"
 import { GetStaticProps, NextPage } from "next"
-import { loadBanners, loadGaknimes } from "lib/data"
-import { Banner as BannerType, Gaknime } from "lib/types"
+import { loadBanners } from "lib/data"
+import { Banner as BannerType } from "lib/types"
 import { Banner } from "components/Banner"
 import { GaknimeCategory, randomCategories } from "components/GaknimeCategory"
 import { Container } from "components/Container"
-import { writeFile } from "fs/promises"
-import { join } from "path"
 import { useGaknimes } from "lib/client"
 
 type PageProps = {
@@ -14,13 +12,13 @@ type PageProps = {
 }
 
 const Home: NextPage<PageProps> = ({ banners }) => {
-  const [categories, setCategories] = React.useState<
+  const [categories, setCategories] = useState<
     ReturnType<typeof randomCategories>
   >([])
 
   const gaknimes = useGaknimes()
 
-  React.useEffect(() => {
+  useEffect(() => {
     setCategories(randomCategories(gaknimes, 5))
   }, [gaknimes])
 

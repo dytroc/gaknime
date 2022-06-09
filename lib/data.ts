@@ -3,8 +3,6 @@ import { join } from "path"
 import { Banner, Gaknime } from "./types"
 import yaml from "yaml"
 import { z } from "zod"
-import React from "react"
-import { AppContext } from "components/AppContext"
 
 const episodeSchema = z.object({
   title: z.string(),
@@ -40,7 +38,7 @@ export const loadGaknimes = async (): Promise<Gaknime[]> => {
 
   for (const file of files) {
     const data = yaml.parseAllDocuments(
-      await (await readFile(join(root, file))).toString()
+      (await readFile(join(root, file))).toString()
     )
     for (const doc of data) {
       const json = doc.toJSON()

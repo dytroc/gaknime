@@ -46,7 +46,7 @@ const SearchPage: NextPage = () => {
   return (
     <Container style={{ marginTop: 32 }}>
       <div style={{ fontSize: 32, fontWeight: 700 }}>
-        {router.query.q} 검색결과
+          {`'${router.query.q}'`} <span style={{ color: 'var(--search-secondary-color)' }}>검색 결과</span>
       </div>
       <Grid style={{ marginTop: 12 }}>
         {result.map((x, i) => (

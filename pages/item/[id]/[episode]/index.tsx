@@ -8,7 +8,7 @@ import _ from "lodash"
 import { GetStaticPaths, GetStaticProps } from "next"
 import Head from "next/head"
 import Link from "next/link"
-import Router, { useRouter } from "next/router"
+import { useRouter } from "next/router"
 import React from "react"
 import { FaArrowLeft } from "react-icons/fa"
 import YouTube from "react-youtube"
@@ -22,8 +22,10 @@ const SkipButton = styled.div`
   background: #fff;
   bottom: 48px;
   right: 48px;
-  border-radius: 12px;
+  border-radius: 3px;
   cursor: pointer;
+  font-weight: bold;
+  font-size: 1.25rem;
 
   &:hover {
     filter: brightness(0.7);

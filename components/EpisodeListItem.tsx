@@ -1,7 +1,7 @@
-import { Episode, Gaknime } from "lib/types"
+import {Episode, Gaknime} from "lib/types"
 import Link from "next/link"
-import { FaPlay } from "react-icons/fa"
-import { MdPlayArrow } from "react-icons/md"
+import {FaPlay} from "react-icons/fa"
+import {MdPlayArrow} from "react-icons/md"
 import styled from "styled-components"
 
 const Thumbnail = styled.div`
@@ -56,34 +56,34 @@ const Container = styled.a`
 `
 
 export const EpisodeListItem: React.FC<{
-  episode: Episode
-  index: number
-  gaknime: Gaknime
-}> = ({ episode, index, gaknime }) => {
-  return (
-    <Link
-      passHref
-      href="/item/[id]/[episode]"
-      as={`/item/${gaknime.id}/${gaknime.episodes.indexOf(episode) + 1}`}
-    >
-      <Container>
-        <div>
-          <Thumbnail
-            style={{
-              backgroundImage: `url(https://i.ytimg.com/vi/${episode.code}/original.jpg)`,
-            }}
-          >
-            <ThumbnailContent>
-              <FaPlay />
-            </ThumbnailContent>
-          </Thumbnail>
-        </div>
-        <div style={{ flexGrow: 1, width: 0 }}>
-          <Title>
-            {episode.noPrefix ? null : `${index + 1}화`} {episode.title}
-          </Title>
-        </div>
-      </Container>
-    </Link>
-  )
+    episode: Episode
+    index: number
+    gaknime: Gaknime
+}> = ({episode, index, gaknime}) => {
+    return (
+        <Link
+            passHref
+            href="/item/[id]/[episode]"
+            as={`/item/${gaknime.id}/${gaknime.episodes.indexOf(episode) + 1}`}
+        >
+            <Container>
+                <div>
+                    <Thumbnail
+                        style={{
+                            backgroundImage: `url(https://i.ytimg.com/vi/${episode.code}/original.jpg)`,
+                        }}
+                    >
+                        <ThumbnailContent>
+                            <FaPlay/>
+                        </ThumbnailContent>
+                    </Thumbnail>
+                </div>
+                <div style={{flexGrow: 1, width: 0}}>
+                    <Title>
+                        {episode.noPrefix ? null : `${index + 1}화`} {episode.title}
+                    </Title>
+                </div>
+            </Container>
+        </Link>
+    )
 }

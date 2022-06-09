@@ -1,6 +1,6 @@
 import "../styles/globals.scss"
 import type { AppProps } from "next/app"
-import React from "react"
+import React, {useEffect, useState} from "react"
 import "swiper/css/bundle"
 import { Layout } from "components/layout"
 import { AppContext } from "components/AppContext"
@@ -8,16 +8,17 @@ import { Gaknime } from "lib/types"
 import Head from "next/head"
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
-  const [darkMode, setDarkMode] = React.useState(
+  const [darkMode, setDarkMode] = useState(
     typeof window !== "undefined" ? !!localStorage.getItem("__darkmode") : false
   )
-  const [hideWarn, setHideWarn] = React.useState(
+  const [isMobile, setIsMobile] = useState(false)
+  const [hideWarn, setHideWarn] = useState(
     typeof window !== "undefined" ? !!localStorage.getItem("__hideWarn") : false
   )
 
-  const [gaknimes, setGaknimes] = React.useState<Gaknime[]>([])
+  const [gaknimes, setGaknimes] = useState<Gaknime[]>([])
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (darkMode) {
       document.body.classList.remove("theme-light")
       document.body.classList.add("theme-dark")
@@ -27,11 +28,23 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
     }
   }, [darkMode])
 
-  React.useEffect(() => {
+  useEffect(() => {
     ;(async () => {
       const json = await (await fetch("/gaknimes.json")).json()
       setGaknimes(json)
     })()
+
+    const listener = () => {
+      setIsMobile(window.innerWidth <= 768);
+    }
+
+    listener();
+
+    window.addEventListener('resize', listener)
+
+    return () => {
+      window.removeEventListener('resize', listener);
+    }
   }, [])
 
   return (
@@ -46,6 +59,8 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
             localStorage.removeItem("__darkmode")
           }
         },
+        isMobile: isMobile,
+        setIsMobile: setIsMobile,
         hideWarn: hideWarn,
         setHideWarn: (v) => {
           setHideWarn(v)
