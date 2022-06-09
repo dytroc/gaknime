@@ -1,0 +1,31 @@
+id: 1
+title: 좀비생활!
+description: 평화롭던 어느 날 갑자기 등장한 좀비. 시뮬레이션을 돌려서 좀비에게서 대비하고 좀비를 퇴치해야만해!
+thumbnail: Amyg8VJl7Gg
+tags:
+  - 공각기동대
+  - 시참
+genres:
+  - 야생
+episodes:
+  - title: 모든 일의 시작
+    code: Amyg8VJl7Gg
+  - title: 적은 내부에
+    code: _H8XZubT7rw
+  - title: 결함
+    code: MrwZ1Zh-U4s
+  - title: 좀비 생활
+    code: Vx4VKIH3sLQ
+  - title: 대규모 확산
+    code: bYxfMmWC8us
+  - title: 좀비 지능의 발달
+    code: P7wjk80cKXI
+  - title: 시뮬레이션
+    code: I5pjJhYZ2Ps
+  - title: "인간 말살 프로젝트: Alpha"
+    code: HA4hXheEMFI
+  - title: 멸종
+    code: pEKxnwI_DI4
+  - title: OVA 비하인드
+    code: Uhhb8uSYf80
+    noPrefix: true
