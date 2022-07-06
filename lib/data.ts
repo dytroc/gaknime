@@ -37,6 +37,7 @@ export const loadGaknimes = async (): Promise<Gaknime[]> => {
   const output: Gaknime[] = []
 
   for (const file of files) {
+    if (!file.endsWith('.yml')) continue;
     const data = yaml.parseAllDocuments(
       (await readFile(join(root, file))).toString()
     )
@@ -85,11 +86,16 @@ export const loadBanners = async (): Promise<Banner[]> => {
         catchPhrase: res.data.catchPhrase,
         gaknime,
         directory: file,
-      })
+      });
     } else {
       console.warn(`Failed validate banner: ${file}`)
     }
   }
+
+  const date = new Date();
+  const reference = date.getUTCDay() + (date.getUTCMonth() * date.getUTCDay());
+
+  output.sort((a, b) => (reference * a.gaknime.id * a.gaknime.description.length - b.gaknime.id * reference) % 3 - 1);
 
   return output
 }

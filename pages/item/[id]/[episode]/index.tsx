@@ -287,7 +287,7 @@ const EpisodePlayer: React.FC = () => {
   )
 }
 
-const ShowOthers: React.FC<{play: ()=>void}> = ({play}) => {
+const ShowOthers: React.FC<{play: () => void}> = ({play}) => {
   const router = useRouter()
 
   const gaknimes = useGaknimes()
@@ -324,10 +324,10 @@ const ShowOthers: React.FC<{play: ()=>void}> = ({play}) => {
                   textStyle={{ color: "#fff", fontSize: 16 }}
                   onClick={() => {
                     router.push(
-                      `/item/[id]/[episode]`,
-                      `/item/${x.id}/1`,
-                      { shallow: true }
-                    )
+                        `/item/[id]/[episode]`,
+                        `/item/${x.id}/1`,
+                        {shallow: true}
+                    ).then()
                     play()
                   }}
                 />

@@ -1,99 +1,79 @@
 import {Gaknime} from "lib/types"
 import _ from "lodash"
-import React, {useContext, useMemo} from "react"
-import {FaChevronLeft, FaChevronRight} from "react-icons/fa"
+import React, {Dispatch, SetStateAction, useContext, useEffect, useMemo, useRef, useState} from "react"
 import styled from "styled-components"
-import {Swiper, SwiperSlide, useSwiper} from "swiper/react"
 import {GaknimeItem} from "./GaknimeItem"
 import {AppContext} from "./AppContext";
+import {motion} from 'framer-motion'
 
 const Container = styled.div`
-  margin-top: 64px;
+  margin-top: 5rem;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  width: 100vw;
 `
 
 const Label = styled.div`
   font-weight: 700;
+  margin-left: 3.255vw;
 `
 
-const StyledSwiper = styled(Swiper)`
-  width: calc(100% + 96px);
-  transform: translateX(-48px);
-  padding-left: 64px;
-
-  @media screen and (max-width: 768px) {
-    width: calc(100% + 48px);
-    transform: translateX(-24px);
-  }
-
-  .navigation-button {
-    opacity: 0;
-  }
-
-  &:hover {
-    .navigation-button {
-      opacity: 1;
-    }
-  }
-`
-
-const BaseNavigationItem = styled.div`
-  position: absolute;
-  top: 0;
-  z-index: 100;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.4);
-  padding: 12px;
+const StyledList = styled.div`
   display: flex;
-  align-items: center;
-  color: #fff;
-  transition: all ease 0.2s;
-  cursor: pointer;
+  flex-direction: row;
+  width: 100%;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  
+  ::-webkit-scrollbar {
+    display: none;
+  }
+`
 
-  &:hover {
+const StyledItems = styled.div`
+  margin-left: 3.255vw;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  scroll-behavior: smooth;
+`
+
+const StyledArrow = styled.div`
+  position: absolute;
+  display: flex;
+  
+  background: rgba(0, 0, 0, 0.5);
+  width: 2.755vw;
+  height: 10.29375vw;
+  color: white;
+  font-size: 2vw;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  transition: opacity 0.5s;
+  opacity: 0;
+  cursor: pointer;
+  z-index: 900;
+  
+  ${StyledList}:hover & {
+    opacity: 1;
     background-color: rgba(0, 0, 0, 0.6);
   }
 `
 
-const Navigation: React.FC = () => {
-    const swiper = useSwiper()
 
-    return (
-        <>
-            <BaseNavigationItem
-                className="navigation-button"
-                onClick={() => {
-                    swiper.slideTo(
-                        swiper.activeIndex - Math.floor(window.innerWidth / 240) - 1
-                    )
-                }}
-                style={{
-                    left: 0,
-                    borderTopRightRadius: 12,
-                    borderBottomRightRadius: 12,
-                }}
-            >
-                <FaChevronLeft size={24}/>
-            </BaseNavigationItem>
-            <BaseNavigationItem
-                className="navigation-button"
-                onClick={() => {
-                    swiper.slideTo(
-                        swiper.activeIndex + Math.floor(window.innerWidth / 240) - 1
-                    )
-                }}
-                style={{
-                    right: 0,
-                    borderTopLeftRadius: 12,
-                    borderBottomLeftRadius: 12,
-                }}
-            >
-                <FaChevronRight size={24}/>
-            </BaseNavigationItem>
-        </>
-    )
+const Arrow: React.FC<{
+    right: boolean, style: any,setHasMoved: Dispatch<SetStateAction<boolean>>,  setCurrentOrder: Dispatch<SetStateAction<number>>,
+    setIsMoving: Dispatch<SetStateAction<boolean>>, isMoving: boolean
+}> = ({
+    right, style = {}, setHasMoved, setCurrentOrder, isMoving, setIsMoving
+}) => {
+    return <StyledArrow style={style} onClick={() => {
+        if (isMoving) return
+        setIsMoving(true);
+        setHasMoved(true);
+        setCurrentOrder((currentOrder) => currentOrder + (right ? 5 : -5));
+    }}>{right ? '>' : '<' }</StyledArrow>
 }
 
 export const GaknimeCategory: React.FC<{
@@ -102,32 +82,81 @@ export const GaknimeCategory: React.FC<{
 }> = ({title, gaknimes}) => {
     const isMobile = useContext(AppContext).isMobile;
 
-    const looped = useMemo(() => {
-        return [...gaknimes, ...gaknimes, ...gaknimes, ...gaknimes, ...gaknimes];
-    }, [gaknimes])
+    const [currentOrder, setCurrentOrder] = useState(0);
+    const [hasMoved, setHasMoved] = useState(false);
+
+    const [isMoving, setIsMoving] = useState(false);
+
+    const order = useMemo(() => {
+        const result = new Array<Gaknime>();
+
+        gaknimes.forEach((item, key) => {
+            result[key] = item;
+            if (!isMobile && gaknimes.length > 5) {
+                result[key + gaknimes.length] = item;
+                result[key + (gaknimes.length * 2)] = item;
+                result[key + (gaknimes.length * 3)] = item;
+                result[key + (gaknimes.length * 4)] = item;
+            }
+        });
+        setCurrentOrder(0);
+
+        return result;
+    }, [gaknimes, isMobile]) || new Array<Gaknime>();
+
+    useEffect(() => {
+        if (!isMoving) return;
+        const timeout = setTimeout(() => {
+            setIsMoving(false);
+
+            if (currentOrder >= (gaknimes.length * 4) - (5 * 2)) {
+                setCurrentOrder((current) => current - gaknimes.length);
+            } else if (currentOrder <= gaknimes.length + 5) {
+                setCurrentOrder((current) => current + gaknimes.length);
+            }
+        }, 1200);
+
+        return () => clearTimeout(timeout);
+    }, [isMoving]);
 
     return (
         <Container>
             <Label style={{
-                fontSize: isMobile ? '1rem' : '1.5rem'
+                fontSize: isMobile ? '1.25rem' : '1.5vw',
+                marginBottom: isMobile ? '0.8rem' : '1rem',
             }}>{title}</Label>
-            <StyledSwiper
-                onUpdate={(swiper) => {
-                    swiper.allowTouchMove = isMobile
-                }}
-                slidesPerView="auto"
-                spaceBetween={16}
-                style={{position: "relative"}}
-                loop
-            >
-                <Navigation/>
-                {!looped.length && <SwiperSlide></SwiperSlide>}
-                {looped.map((x, i) => (
-                    <SwiperSlide key={i} style={{width: 240}}>
-                        <GaknimeItem gaknime={x}/>
-                    </SwiperSlide>
-                ))}
-            </StyledSwiper>
+            <StyledList style={{
+                overflowX: isMobile ? 'scroll' : 'visible',
+            }}>
+                {hasMoved && !isMobile && <Arrow setIsMoving={setIsMoving} style={{
+                    left: 0,
+                    borderBottomRightRadius: '0.35vw',
+                    borderTopRightRadius: '0.35vw',
+                }} right={false} setHasMoved={setHasMoved} setCurrentOrder={setCurrentOrder} isMoving={isMoving} />}
+                <StyledItems
+                    style={isMobile ? {
+                        gap: '2.5vw',
+                        width: 'CALC(100% + 3.255vw)'
+                    } : {
+                        transition: isMoving ? 'transform ease 1.2s' : 'none',
+                        transform: `translateX(${(-currentOrder - (gaknimes.length > 5 ? gaknimes.length : 0)) * (18.3 + 0.5)}vw)`,
+                        gap: '0.5vw',
+                    }}
+                >
+                    {order.map((gaknime, index) => <GaknimeItem
+                        gaknime={gaknime} key={index} contentStyle={{
+                            width: isMobile ? '52vw' : '18.3vw', gap: isMobile ? '1vw' : '0.5vw',
+                            opacity: (!isMobile && gaknimes.length > 5 && !hasMoved && index < gaknimes.length) ? 0 : 1,
+                            marginRight: index === gaknimes.length - 1 && isMobile ? '3.255vw' : '0vw'
+                        }}
+                    />)}
+                </StyledItems>
+                {order.length > 5 && !isMobile && <Arrow setIsMoving={setIsMoving} style={{
+                    right: 0,
+                    borderBottomLeftRadius: '0.35vw',
+                    borderTopLeftRadius: '0.35vw',
+                }} right={true} setHasMoved={setHasMoved} setCurrentOrder={setCurrentOrder} isMoving={isMoving} />}
+            </StyledList>
         </Container>
     )
 }

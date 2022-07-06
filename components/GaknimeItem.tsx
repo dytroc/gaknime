@@ -6,8 +6,9 @@ import React, { useRef, useEffect } from "react"
 export const GaknimeItem: React.FC<{
     gaknime: Gaknime
     onClick?: () => void
-    textStyle?: any
-}> = ({gaknime, onClick, textStyle = {}}) => {
+    textStyle?: any,
+    contentStyle?: any
+}> = ({gaknime, onClick, textStyle = {}, contentStyle = { gap: 8 }}) => {
     const router = useRouter()
 
     const imageRef = useRef<HTMLImageElement | null>(null)
@@ -19,7 +20,7 @@ export const GaknimeItem: React.FC<{
             const observer = new ResizeObserver((entries) => {
                 const rect = entries[0].contentRect
 
-                setFontSize((rect.width / 240) * 14)
+                setFontSize((rect.width / 240) * 14.5)
             })
 
             observer.observe(imageRef.current)
@@ -31,7 +32,7 @@ export const GaknimeItem: React.FC<{
     }, [])
 
     const content = (
-        <div style={{display: "flex", flexDirection: "column", gap: 8}}>
+        <div style={{display: "flex", flexDirection: "column", ...contentStyle}}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
                 ref={imageRef}

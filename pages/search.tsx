@@ -27,7 +27,40 @@ const Grid = styled.div`
   @media screen and (min-width: 1024px) {
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   }
+  
+  a {
+    margin-top: 25px;
+  }
 `
+
+const f = ['ㄱ', 'ㄲ', 'ㄴ', 'ㄷ', 'ㄸ', 'ㄹ', 'ㅁ',
+    'ㅂ', 'ㅃ', 'ㅅ', 'ㅆ', 'ㅇ', 'ㅈ', 'ㅉ',
+    'ㅊ', 'ㅋ', 'ㅌ', 'ㅍ', 'ㅎ'];
+const s = ['ㅏ', 'ㅐ', 'ㅑ', 'ㅒ', 'ㅓ', 'ㅔ', 'ㅕ',
+    'ㅖ', 'ㅗ', 'ㅘ', 'ㅙ', 'ㅚ', 'ㅛ', 'ㅜ',
+    'ㅝ', 'ㅞ', 'ㅟ', 'ㅠ', 'ㅡ', 'ㅢ', 'ㅣ'];
+const t = ['', 'ㄱ', 'ㄲ', 'ㄳ', 'ㄴ', 'ㄵ', 'ㄶ',
+    'ㄷ', 'ㄹ', 'ㄺ', 'ㄻ', 'ㄼ', 'ㄽ', 'ㄾ',
+    'ㄿ', 'ㅀ', 'ㅁ', 'ㅂ', 'ㅄ', 'ㅅ', 'ㅆ',
+    'ㅇ', 'ㅈ', 'ㅊ', 'ㅋ', 'ㅌ', 'ㅍ', 'ㅎ'];
+
+const expression = /[가-힣]/g
+
+const ga = 44032;
+
+const disassembleKoreanString = (string: string): string => {
+    let result = '';
+
+    for (let i = 0; i < string.length; i++) {
+        if (string.charAt(i).match(expression)) {
+            const uni = string.charCodeAt(i) - ga;
+
+            const fn = Math.floor(uni / 588);
+            result += f[fn] + s[Math.floor((uni - (fn * 588)) / 28)] + t[Math.floor(uni % 28)];
+        } else result += string.charAt(i);
+    }
+    return result;
+}
 
 const SearchPage: NextPage = () => {
   const router = useRouter()
@@ -38,8 +71,7 @@ const SearchPage: NextPage = () => {
     if (typeof router.query.q !== "string") return []
     return gaknimes.filter(
       (x) =>
-        x.title.includes(router.query.q as string) ||
-        x.description.includes(router.query.q as string)
+          disassembleKoreanString(x.title).includes(disassembleKoreanString(router.query.q as string))
     )
   }, [gaknimes, router.query.q])
 

@@ -25,11 +25,11 @@ const Home: NextPage<PageProps> = ({ banners }) => {
   return (
     <div>
       <Banner banners={banners} />
-      <Container>
+      <div>
         {categories.map((x, i) => (
           <GaknimeCategory key={i} gaknimes={x.items} title={x.title} />
         ))}
-      </Container>
+      </div>
     </div>
   )
 }

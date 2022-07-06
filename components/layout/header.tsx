@@ -89,6 +89,8 @@ export const Header: React.FC = () => {
             style={{
                 background:
                     scrollY <= 100 && isAbsolute ? "transparent" : "var(--primary-color)",
+                boxShadow:
+                    scrollY <= 100 && isAbsolute ? "var(--header-border) 0 0 0 0" : "var(--header-border) 0 0.2vh 0 0",
                 transition: "all ease .2s",
             }}
         >
@@ -132,6 +134,7 @@ export const Header: React.FC = () => {
                     }}
                     onSubmit={(e) => {
                         e.preventDefault()
+                        if (searchTerm.replace(/\s/g, '').length === 0) return;
                         router
                             .push({pathname: "/search", query: {q: searchTerm}})
                             .then(() => {
