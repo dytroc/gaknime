@@ -87,18 +87,17 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
         <meta name="theme-color" content="#eeee00"/>
         <meta property="twitter:creator" content="@dytro_dev" />
         <meta name="keywords" content="각별, 각니메, 각프텔"/>
-
-        <Script src="https://www.googletagmanager.com/gtag/js?id=G-XYB2R9CF72" strategy="afterInteractive" />
-        <Script id="google-analytics" strategy="afterInteractive">
-          {`
+      </Head>
+      <Script src="https://www.googletagmanager.com/gtag/js?id=G-XYB2R9CF72" strategy="afterInteractive" />
+      <Script id="google-analytics" strategy="afterInteractive">
+        {`
           window.dataLayer = window.dataLayer || [];
           function gtag(){window.dataLayer.push(arguments);}
           gtag('js', new Date());
 
           gtag('config', 'G-XYB2R9CF72');
         `}
-        </Script>
-      </Head>
+      </Script>
       <Layout>
         <Component {...pageProps} />
       </Layout>
