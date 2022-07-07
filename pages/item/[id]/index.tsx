@@ -22,6 +22,11 @@ const ItemPage: NextPage<PageProps> = ({ gaknime }) => {
           key="description"
         />
         <meta
+            name="og:description"
+            content={gaknime.description}
+            key="og:description"
+        />
+        <meta
           property="og:image"
           content={`https://i.ytimg.com/vi/${gaknime.thumbnail}/original.jpg`}
           key="og:image"
