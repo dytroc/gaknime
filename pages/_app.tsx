@@ -79,6 +79,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
         <link rel="icon" href="/favicon.png" />
         <link rel="shortcut icon" href="/favicon.png"/>
 
+        <meta property="og:type" content="website" />
         <meta property="og:title" content="각프텔" />
         <meta property="description" content="각니메들을 손쉽게 플레이리스트로 스트리밍하세요." />
         <meta property="og:description" content="각니메들을 손쉽게 플레이리스트로 스트리밍하세요." />
