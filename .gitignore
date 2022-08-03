@@ -36,3 +36,4 @@ yarn-error.log*
 
 # Generated file
 public/gaknimes.json
+public/banners.json
