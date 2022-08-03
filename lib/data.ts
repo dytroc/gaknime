@@ -25,7 +25,7 @@ const bannerSchema = z.object({
   ref: z.number().int(),
 })
 
-let cachedGaknimes: Gaknime[]|null = null
+let cachedGaknimes: Gaknime[] | null = null
 
 export const loadGaknimes = async (): Promise<Gaknime[]> => {
   if (cachedGaknimes) {
@@ -37,7 +37,7 @@ export const loadGaknimes = async (): Promise<Gaknime[]> => {
   const output: Gaknime[] = []
 
   for (const file of files) {
-    if (!file.endsWith('.yml')) continue;
+    if (!file.endsWith(".yml")) continue
     const data = yaml.parseAllDocuments(
       (await readFile(join(root, file))).toString()
     )
@@ -64,7 +64,11 @@ export const loadGaknimes = async (): Promise<Gaknime[]> => {
   return output
 }
 
+let cachedBanners: Banner[] | null = null
+
 export const loadBanners = async (): Promise<Banner[]> => {
+  if (cachedBanners) return cachedBanners
+
   const gaknimes = await loadGaknimes()
   const root = join(process.cwd(), "public", "banners")
   const files = await readdir(root)
@@ -86,18 +90,29 @@ export const loadBanners = async (): Promise<Banner[]> => {
         catchPhrase: res.data.catchPhrase,
         gaknime,
         directory: file,
-      });
+      })
     } else {
       console.warn(`Failed validate banner: ${file}`)
     }
   }
 
-  const date = new Date();
-  const reference = date.getUTCDay() + (date.getUTCMonth() * date.getUTCDay());
+  const date = new Date()
+  const reference = date.getUTCDay() + date.getUTCMonth() * date.getUTCDay()
 
-  output.sort((a, b) => (reference * a.gaknime.id * a.gaknime.description.length - b.gaknime.id * reference) % 3 - 1);
+  output.sort(
+    (a, b) =>
+      ((reference * a.gaknime.id * a.gaknime.description.length -
+        b.gaknime.id * reference) %
+        3) -
+      1
+  )
+
+  cachedBanners = output
+
+  await writeFile(
+    join(process.cwd(), "public/banners.json"),
+    JSON.stringify(output)
+  )
 
   return output
 }
-
-
