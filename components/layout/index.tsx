@@ -29,7 +29,7 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({
 
     return (
         <div
-            style={{display: "flex", flexDirection: "column", minHeight: "100vh"}}
+            style={{display: "flex", flexDirection: "column", minHeight: "100vh", overflowX: "hidden"}}
         >
             <Header/>
             {children}
