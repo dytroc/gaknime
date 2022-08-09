@@ -182,7 +182,7 @@ export const Header: React.FC = () => {
                                 ? "var(--primary-color)"
                                 : "var(--primary-contrast-color)",
                     }}
-                    href="https://github.com/dytroinc/gaknime"
+                    href="https://github.com/dytroc/gaknime"
                     target="_blank"
                     rel="noreferrer"
                 >
