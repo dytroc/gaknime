@@ -9,6 +9,9 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@next/eslint-plugin-next": "^12.3.0",
+    "eslint-plugin-react": "^7.31.8",
+    "eslint-plugin-react-hooks": "^4.6.0",
     "framer-motion": "^6.3.10",
     "lodash": "^4.17.21",
     "next": "12.1.6",
@@ -28,7 +31,7 @@
     "@types/react": "18.0.10",
     "@types/react-dom": "18.0.5",
     "@types/styled-components": "^5.1.25",
-    "eslint": "8.16.0",
+    "eslint": "^8.16.0",
     "eslint-config-next": "12.1.6",
     "prettier": "^2.6.2",
     "sass": "^1.52.2",

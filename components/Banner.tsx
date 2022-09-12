@@ -1,13 +1,13 @@
-import {Banner as BannerType} from "lib/types"
-import React, {useEffect} from "react"
-import styled from "styled-components"
-import {Swiper, SwiperSlide, useSwiper} from "swiper/react"
-import {FaChevronLeft, FaChevronRight} from "react-icons/fa"
-import {useForceRefresh} from "lib/hooks"
-import {Autoplay, EffectFade} from "swiper"
-import Link from "next/link"
-import {useRouter} from "next/router"
-import {effect} from "zod";
+import { Banner as BannerType } from 'lib/types'
+import React, { useEffect } from 'react'
+import styled from 'styled-components'
+import { Swiper, SwiperSlide, useSwiper } from 'swiper/react'
+import { FaChevronLeft, FaChevronRight } from 'react-icons/fa'
+import { useForceRefresh } from 'lib/hooks'
+import { Autoplay, EffectFade } from 'swiper'
+import Link from 'next/link'
+import { useRouter } from 'next/router'
+import { effect } from 'zod';
 
 const Root = styled.div`
   position: relative;
@@ -37,7 +37,7 @@ const Container = styled.div<{ directory: string }>`
     padding: 24px;
   }
   width: 3200px;
-  background-image: url(/banners/${({directory}) => directory}/banner.png);
+  background-image: url(/banners/${({ directory }) => directory}/banner.png);
   background-size: cover;
   background-position: center;
   position: relative;
@@ -117,9 +117,9 @@ const Navigation: React.FC = () => {
         const callback = () => {
             update()
         }
-        swiper.on("slideChange", callback)
+        swiper.on('slideChange', callback)
         return () => {
-            swiper.off("slideChange", callback)
+            swiper.off('slideChange', callback)
         }
     }, [swiper, update])
 
@@ -195,9 +195,9 @@ const Pagination: React.FC = () => {
         const callback = () => {
             update()
         }
-        swiper.on("slideChange", callback)
+        swiper.on('slideChange', callback)
         return () => {
-            swiper.off("slideChange", callback)
+            swiper.off('slideChange', callback)
         }
     }, [swiper, update])
 
@@ -248,7 +248,7 @@ const Pagination: React.FC = () => {
                         swiper.slideTo(i)
                     }}
                     key={i}
-                    style={{background: swiper.activeIndex === i ? "#fff" : ""}}
+                    style={{ background: swiper.activeIndex === i ? '#fff' : '' }}
                     className="dot"
                 />
             ))}
@@ -269,7 +269,7 @@ const StyledSwiper = styled(Swiper)`
   }
 `
 
-export const Banner: React.FC<{ banners: BannerType[] }> = ({banners}) => {
+export const Banner: React.FC<{ banners: BannerType[] }> = ({ banners }) => {
     const [scale, setScale] = React.useState(0)
     const containerRef = React.useRef<HTMLDivElement | null>(null)
     useEffect(() => {
@@ -292,7 +292,7 @@ export const Banner: React.FC<{ banners: BannerType[] }> = ({banners}) => {
     return (
         <Root ref={(instance) => (containerRef.current = instance)}>
             <StyledSwiper
-                effect={"fade"}
+                effect={'fade'}
                 modules={[Autoplay, EffectFade]}
                 autoplay={{
                     delay: 5000,
@@ -303,7 +303,7 @@ export const Banner: React.FC<{ banners: BannerType[] }> = ({banners}) => {
                     crossFade: true
                 }}
                 allowTouchMove={false}
-                style={{transform: `scale(${scale})`}}
+                style={{ transform: `scale(${scale})` }}
             >
                 <Navigation/>
                 <Pagination/>

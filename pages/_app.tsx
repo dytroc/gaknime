@@ -1,15 +1,15 @@
-import "../styles/globals.scss"
-import type {AppProps} from "next/app"
-import React, {useEffect, useState} from "react"
-import "swiper/css/bundle"
-import {Layout} from "components/layout"
-import {AppContext} from "components/AppContext"
-import {Gaknime} from "lib/types"
-import Head from "next/head"
+import '../styles/globals.scss'
+import type { AppProps } from 'next/app'
+import React, { useEffect, useState } from 'react'
+import 'swiper/css/bundle'
+import { Layout } from 'components/layout'
+import { AppContext } from 'components/AppContext'
+import { Gaknime } from 'lib/types'
+import Head from 'next/head'
 
-const MyApp = ({Component, pageProps}: AppProps) => {
+const MyApp = ({ Component, pageProps }: AppProps) => {
     const [darkMode, setDarkMode] = useState(
-        typeof window !== "undefined" ? !!localStorage.getItem("__darkmode") : false
+        typeof window !== 'undefined' ? !!localStorage.getItem('__darkmode') : false
     )
     const [isMobile, setIsMobile] = useState(false)
 
@@ -17,17 +17,17 @@ const MyApp = ({Component, pageProps}: AppProps) => {
 
     useEffect(() => {
         if (darkMode) {
-            document.body.classList.remove("theme-light")
-            document.body.classList.add("theme-dark")
+            document.body.classList.remove('theme-light')
+            document.body.classList.add('theme-dark')
         } else {
-            document.body.classList.remove("theme-dark")
-            document.body.classList.add("theme-light")
+            document.body.classList.remove('theme-dark')
+            document.body.classList.add('theme-light')
         }
     }, [darkMode])
 
     useEffect(() => {
         ;(async () => {
-            const json = await (await fetch("/gaknimes.json")).json()
+            const json = await (await fetch('/gaknimes.json')).json()
             setGaknimes(json)
         })()
 
@@ -51,9 +51,9 @@ const MyApp = ({Component, pageProps}: AppProps) => {
                 setDarkMode: (v: boolean) => {
                     setDarkMode(v)
                     if (v) {
-                        localStorage.setItem("__darkmode", "1")
+                        localStorage.setItem('__darkmode', '1')
                     } else {
-                        localStorage.removeItem("__darkmode")
+                        localStorage.removeItem('__darkmode')
                     }
                 },
                 isMobile: isMobile,

@@ -1,14 +1,14 @@
-import {Gaknime} from "lib/types"
-import Link from "next/link"
-import {useRouter} from "next/router"
-import React, { useRef, useEffect } from "react"
+import { Gaknime } from 'lib/types'
+import Link from 'next/link'
+import { useRouter } from 'next/router'
+import React, { useRef, useEffect } from 'react'
 
 export const GaknimeItem: React.FC<{
     gaknime: Gaknime
     onClick?: () => void
     textStyle?: any,
     contentStyle?: any
-}> = ({gaknime, onClick, textStyle = {}, contentStyle = { gap: 8 }}) => {
+}> = ({ gaknime, onClick, textStyle = {}, contentStyle = { gap: 8 } }) => {
     const router = useRouter()
 
     const imageRef = useRef<HTMLImageElement | null>(null)
@@ -32,23 +32,23 @@ export const GaknimeItem: React.FC<{
     }, [])
 
     const content = (
-        <div style={{display: "flex", flexDirection: "column", ...contentStyle}}>
+        <div style={{ display: 'flex', flexDirection: 'column', ...contentStyle }}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
                 ref={imageRef}
                 src={`https://i.ytimg.com/vi/${gaknime.thumbnail}/original.jpg`}
                 alt="Thumbnail"
                 width="100%"
-                style={{borderRadius: 6}}
+                style={{ borderRadius: 6 }}
             />
-            <div style={{fontSize: fontSize, width: "100%", ...textStyle}}>
+            <div style={{ fontSize: fontSize, width: '100%', ...textStyle }}>
                 {gaknime.title}
             </div>
         </div>
     )
 
     return onClick ? (
-        <div onClick={onClick} style={{cursor: "pointer"}}>
+        <div onClick={onClick} style={{ cursor: 'pointer' }}>
             {content}
         </div>
     ) : (

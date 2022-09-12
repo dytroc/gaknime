@@ -1,12 +1,12 @@
-import { AppContext } from "components/AppContext"
-import { Collapse } from "components/Collapse"
-import { Container } from "components/Container"
-import { Switch } from "components/Switch"
-import { motion } from "framer-motion"
-import { NextPage } from "next"
-import React from "react"
-import { FaChevronDown } from "react-icons/fa"
-import styled from "styled-components"
+import { AppContext } from 'components/AppContext'
+import { Collapse } from 'components/Collapse'
+import { Container } from 'components/Container'
+import { Switch } from 'components/Switch'
+import { motion } from 'framer-motion'
+import { NextPage } from 'next'
+import React from 'react'
+import { FaChevronDown } from 'react-icons/fa'
+import styled from 'styled-components'
 
 const SearchSectionTitle = styled.div`
   font-size: 18px;
@@ -45,7 +45,7 @@ const SettingsSwitch: React.FC<{
   onChange: (v: boolean) => void
 }> = ({ label, onChange, value }) => {
   return (
-    <div style={{ display: "flex", alignItems: "center" }}>
+    <div style={{ display: 'flex', alignItems: 'center' }}>
       <div style={{ fontSize: 16, fontWeight: 600, flexGrow: 1 }}>{label}</div>
       <Switch onChange={onChange} value={value} />
     </div>
@@ -62,7 +62,7 @@ const Settings: NextPage = () => {
     <Container
       style={{
         paddingTop: 24,
-        background: "var(--secondary-background-color)",
+        background: 'var(--secondary-background-color)',
         flexGrow: 1,
       }}
     >

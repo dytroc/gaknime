@@ -1,24 +1,24 @@
-import React, {useEffect} from "react"
-import {useRouter} from "next/router"
-import styled, {css} from "styled-components"
-import Link from "next/link"
-import {FaCog, FaGithub, FaSearch} from "react-icons/fa"
-import {AnimatePresence, motion} from "framer-motion";
+import React, { useEffect } from 'react'
+import { useRouter } from 'next/router'
+import styled, { css } from 'styled-components'
+import Link from 'next/link'
+import { FaCog, FaGithub, FaSearch } from 'react-icons/fa'
+import { AnimatePresence, motion } from 'framer-motion';
 
-const absolute = ["/"]
+const absolute = ['/']
 
 const Container = styled.div<{ isAbsolute: boolean }>`
   height: 65px;
   width: 100%;
 
   gap: 24px;
-  ${({isAbsolute}) =>
+  ${({ isAbsolute }) =>
     isAbsolute
         ? css`
           position: fixed;
           z-index: 1000;
         `
-        : ""}
+        : ''}
 
   display: flex;
 
@@ -71,16 +71,16 @@ export const Header: React.FC = () => {
 
     const [searchOpen, setSearchOpen] = React.useState(false)
 
-    const [searchTerm, setSearchTerm] = React.useState("")
+    const [searchTerm, setSearchTerm] = React.useState('')
 
     useEffect(() => {
         if (!isAbsolute) return
         setScrollY(window.scrollY)
         const onScroll = () => setScrollY(window.scrollY)
         // clean up code
-        window.removeEventListener("scroll", onScroll)
-        window.addEventListener("scroll", onScroll, {passive: true})
-        return () => window.removeEventListener("scroll", onScroll)
+        window.removeEventListener('scroll', onScroll)
+        window.addEventListener('scroll', onScroll, { passive: true })
+        return () => window.removeEventListener('scroll', onScroll)
     }, [isAbsolute])
 
     return (
@@ -88,10 +88,10 @@ export const Header: React.FC = () => {
             isAbsolute={isAbsolute}
             style={{
                 background:
-                    scrollY <= 100 && isAbsolute ? "transparent" : "var(--primary-color)",
+                    scrollY <= 100 && isAbsolute ? 'transparent' : 'var(--primary-color)',
                 boxShadow:
-                    scrollY <= 100 && isAbsolute ? "var(--border-color) 0 0 0 0" : "var(--border-color) 0 0.2vh 0 0",
-                transition: "all ease .2s",
+                    scrollY <= 100 && isAbsolute ? 'var(--border-color) 0 0 0 0' : 'var(--border-color) 0 0.2vh 0 0',
+                transition: 'all ease .2s',
             }}
         >
             <Link href="/" passHref>
@@ -99,17 +99,17 @@ export const Header: React.FC = () => {
                     style={{
                         color:
                             scrollY <= 100 && isAbsolute
-                                ? "var(--primary-color)"
-                                : "var(--primary-contrast-color)",
+                                ? 'var(--primary-color)'
+                                : 'var(--primary-contrast-color)',
                         textShadow: `var(--text-shadow-color) 0 0 ${
-                            scrollY <= 100 && isAbsolute ? "4px" : 0
+                            scrollY <= 100 && isAbsolute ? '4px' : 0
                         }`,
                     }}
                 >
                     GAKNIME
                 </Logo>
             </Link>
-            <div style={{flexGrow: 1, width: 0}}/>
+            <div style={{ flexGrow: 1, width: 0 }}/>
             <AnimatePresence>{searchOpen && (
                 <motion.form
                     initial={{
@@ -136,7 +136,7 @@ export const Header: React.FC = () => {
                         e.preventDefault()
                         if (searchTerm.replace(/\s/g, '').length === 0) return;
                         router
-                            .push({pathname: "/search", query: {q: searchTerm}})
+                            .push({ pathname: '/search', query: { q: searchTerm } })
                             .then(() => {
                                 setScrollY(200)
                             })
@@ -156,21 +156,21 @@ export const Header: React.FC = () => {
             )}</AnimatePresence>
             <div
                 style={{
-                    display: "flex",
+                    display: 'flex',
                     gap: 24,
-                    alignItems: "center",
-                    filter: "drop-shadow(2px 2px 0 var(--text-shadow-color))",
+                    alignItems: 'center',
+                    filter: 'drop-shadow(2px 2px 0 var(--text-shadow-color))',
                 }}
             >
                 <FaSearch
                     onClick={() => {
                         setSearchOpen(true)
                     }}
-                    style={{cursor: "pointer", transition: 'color ease .4s'}}
+                    style={{ cursor: 'pointer', transition: 'color ease .4s' }}
                     color={
                         scrollY <= 100 && isAbsolute
-                            ? "var(--primary-color)"
-                            : "var(--primary-contrast-color)"
+                            ? 'var(--primary-color)'
+                            : 'var(--primary-contrast-color)'
                     }
                     size={24}
                 />
@@ -179,8 +179,8 @@ export const Header: React.FC = () => {
                         transition: 'color ease .4s',
                         color:
                             scrollY <= 100 && isAbsolute
-                                ? "var(--primary-color)"
-                                : "var(--primary-contrast-color)",
+                                ? 'var(--primary-color)'
+                                : 'var(--primary-contrast-color)',
                     }}
                     href="https://github.com/dytroc/gaknime"
                     target="_blank"
@@ -194,8 +194,8 @@ export const Header: React.FC = () => {
                             transition: 'color ease .4s',
                             color:
                                 scrollY <= 100 && isAbsolute
-                                    ? "var(--primary-color)"
-                                    : "var(--primary-contrast-color)",
+                                    ? 'var(--primary-color)'
+                                    : 'var(--primary-contrast-color)',
                         }}
                     >
                         <FaCog size={24}/>

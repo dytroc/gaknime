@@ -1,11 +1,11 @@
-import React, {useEffect, useState} from "react"
-import { GetStaticProps, NextPage } from "next"
-import { loadBanners } from "lib/data"
-import { Banner as BannerType } from "lib/types"
-import { Banner } from "components/Banner"
-import { GaknimeCategory, randomCategories } from "components/GaknimeCategory"
-import { Container } from "components/Container"
-import { useGaknimes } from "lib/client"
+import React, { useEffect, useState } from 'react'
+import { GetStaticProps, NextPage } from 'next'
+import { loadBanners } from 'lib/data'
+import { Banner as BannerType } from 'lib/types'
+import { Banner } from 'components/Banner'
+import { GaknimeCategory, randomCategories } from 'components/GaknimeCategory'
+import { Container } from 'components/Container'
+import { useGaknimes } from 'lib/client'
 
 type PageProps = {
   banners: BannerType[]

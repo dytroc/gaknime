@@ -1,12 +1,12 @@
-import React, {FC} from "react";
-import {FaPlay} from "react-icons/fa";
-import {Episode, Gaknime} from "../lib/types";
-import Link from "next/link";
+import React, { FC } from 'react';
+import { FaPlay } from 'react-icons/fa';
+import { Episode, Gaknime } from '../lib/types';
+import Link from 'next/link';
 
 export const PlayButton: FC<{
     targetEpisodeIndex: number,
     gaknime: Gaknime
-}> = ({targetEpisodeIndex, gaknime}) => {
+}> = ({ targetEpisodeIndex, gaknime }) => {
     return (<Link href={`/item/${gaknime.id}/${targetEpisodeIndex + 1}`}>
         <div style={{
             display: 'flex',

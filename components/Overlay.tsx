@@ -1,10 +1,10 @@
-import React, {FC, ReactNode, useEffect, useState} from "react"
-import {createPortal} from "react-dom"
-import {AnimatePresence, motion} from "framer-motion"
-import styled from "styled-components"
+import React, { FC, ReactNode, useEffect, useState } from 'react'
+import { createPortal } from 'react-dom'
+import { AnimatePresence, motion } from 'framer-motion'
+import styled from 'styled-components'
 
-const Portal: FC<{ children: ReactNode }> = ({children}) => {
-    const [el] = useState(document.createElement("div"));
+const Portal: FC<{ children: ReactNode }> = ({ children }) => {
+    const [el] = useState(document.createElement('div'));
     useEffect(() => {
         document.body.appendChild(el);
         return () => {
@@ -30,7 +30,7 @@ const Overlay: React.FC<React.StyleHTMLAttributes<HTMLDivElement> & {
     children:
         | React.ReactNode
         | ((props: { close: () => void }) => React.ReactNode)
-}> = ({children, open: openProp, style, close}) => {
+}> = ({ children, open: openProp, style, close }) => {
     const content = (
         <AnimatePresence>
             {(openProp ?? open) && (
@@ -45,9 +45,9 @@ const Overlay: React.FC<React.StyleHTMLAttributes<HTMLDivElement> & {
                         opacity: 0,
                     }}
                     transition={{
-                        type: "tween",
+                        type: 'tween',
                     }}
-                    style={{zIndex: 99999, position: "relative"}}
+                    style={{ zIndex: 99999, position: 'relative' }}
                 >
                     <Backdrop
                         onClick={() => {
@@ -56,32 +56,32 @@ const Overlay: React.FC<React.StyleHTMLAttributes<HTMLDivElement> & {
                     />
                     <motion.div
                         initial={{
-                            translateX: "-50%",
-                            translateY: "-50%",
+                            translateX: '-50%',
+                            translateY: '-50%',
                             y: -80,
                         }}
                         animate={{
                             y: 0,
                             transition: {
-                                type: "tween",
+                                type: 'tween',
                             },
                         }}
                         exit={{
                             y: 80,
                             transition: {
-                                type: "tween",
+                                type: 'tween',
                             },
                         }}
                         style={{
-                            position: "fixed",
-                            left: "50%",
-                            top: "50%",
-                            transform: `translate(-50%, -50%)`,
+                            position: 'fixed',
+                            left: '50%',
+                            top: '50%',
+                            transform: 'translate(-50%, -50%)',
                             ...style,
                         }}
                     >
-                        {typeof children === "function"
-                            ? children({close: () => close?.()})
+                        {typeof children === 'function'
+                            ? children({ close: () => close?.() })
                             : children}
                     </motion.div>
                 </motion.div>

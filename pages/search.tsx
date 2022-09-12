@@ -1,10 +1,10 @@
-import { Container } from "components/Container"
-import { GaknimeItem } from "components/GaknimeItem"
-import { useGaknimes } from "lib/client"
-import { NextPage } from "next"
-import { useRouter } from "next/router"
-import React from "react"
-import styled from "styled-components"
+import { Container } from 'components/Container'
+import { GaknimeItem } from 'components/GaknimeItem'
+import { useGaknimes } from 'lib/client'
+import { NextPage } from 'next'
+import { useRouter } from 'next/router'
+import React from 'react'
+import styled from 'styled-components'
 
 const Grid = styled.div`
   display: grid;
@@ -68,7 +68,7 @@ const SearchPage: NextPage = () => {
   const gaknimes = useGaknimes()
 
   const result = React.useMemo(() => {
-    if (typeof router.query.q !== "string") return []
+    if (typeof router.query.q !== 'string') return []
     return gaknimes.filter(
       (x) =>
           disassembleKoreanString(x.title).includes(disassembleKoreanString(router.query.q as string))

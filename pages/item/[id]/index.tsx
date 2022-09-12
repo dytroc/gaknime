@@ -1,9 +1,9 @@
-import { loadGaknimes } from "lib/data"
-import { Gaknime } from "lib/types"
-import { GetStaticPaths, GetStaticProps, NextPage } from "next"
-import Head from "next/head"
-import { useRouter } from "next/router"
-import React from "react"
+import { loadGaknimes } from 'lib/data'
+import { Gaknime } from 'lib/types'
+import { GetStaticPaths, GetStaticProps, NextPage } from 'next'
+import Head from 'next/head'
+import { useRouter } from 'next/router'
+import React from 'react'
 
 const ItemPage: NextPage<PageProps> = ({ gaknime }) => {
   const router = useRouter()
@@ -63,7 +63,7 @@ export const getStaticProps: GetStaticProps<PageProps, { id: string }> = async (
 
   return {
     props: {
-      gaknime: gaknimes.find((x) => x.id === parseInt(ctx.params?.id ?? ""))!,
+      gaknime: gaknimes.find((x) => x.id === parseInt(ctx.params?.id ?? ''))!,
     },
   }
 }

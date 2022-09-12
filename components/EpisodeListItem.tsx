@@ -1,8 +1,8 @@
-import {Episode, Gaknime} from "lib/types"
-import Link from "next/link"
-import {FaPlay} from "react-icons/fa"
-import {MdPlayArrow} from "react-icons/md"
-import styled from "styled-components"
+import { Episode, Gaknime } from 'lib/types'
+import Link from 'next/link'
+import { FaPlay } from 'react-icons/fa'
+import { MdPlayArrow } from 'react-icons/md'
+import styled from 'styled-components'
 
 const Thumbnail = styled.div`
   width: 200px;
@@ -59,7 +59,7 @@ export const EpisodeListItem: React.FC<{
     episode: Episode
     index: number
     gaknime: Gaknime
-}> = ({episode, index, gaknime}) => {
+}> = ({ episode, index, gaknime }) => {
     return (
         <Link
             passHref
@@ -78,7 +78,7 @@ export const EpisodeListItem: React.FC<{
                         </ThumbnailContent>
                     </Thumbnail>
                 </div>
-                <div style={{flexGrow: 1, width: 0}}>
+                <div style={{ flexGrow: 1, width: 0 }}>
                     <Title>
                         {episode.noPrefix ? null : `${index + 1}화`} {episode.title}
                     </Title>

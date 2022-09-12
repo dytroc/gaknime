@@ -1,8 +1,8 @@
-import {GaknimeModal} from "components/GaknimeModal"
-import Overlay from "components/Overlay"
-import {useRouter} from "next/router"
-import React from "react"
-import {Header} from "./header"
+import { GaknimeModal } from 'components/GaknimeModal'
+import Overlay from 'components/Overlay'
+import { useRouter } from 'next/router'
+import React from 'react'
+import { Header } from './header'
 
 export const Layout: React.FC<{ children: React.ReactNode }> = ({
                                                                     children,
@@ -19,7 +19,7 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({
 
         const q = Object.keys(router.query).length
             ? `?${new URLSearchParams(query as Record<string, string>)}`
-            : ""
+            : ''
 
         router.push(`${router.route}${q}`, `${router.pathname}${q}`, {
             shallow: true,
@@ -29,7 +29,7 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({
 
     return (
         <div
-            style={{display: "flex", flexDirection: "column", minHeight: "100vh", overflowX: "hidden"}}
+            style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh', overflowX: 'hidden' }}
         >
             <Header />
             {children}

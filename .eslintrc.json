@@ -1,3 +1,12 @@
 {
-  "extends": "next/core-web-vitals"
+  "extends": "next/core-web-vitals",
+  "plugins": [
+    "eslint-plugin-react",
+    "eslint-plugin-react-hooks"
+  ],
+  "rules": {
+    "react/no-unknown-property": ["off"],
+    "object-curly-spacing": ["error", "always"],
+    "quotes": ["error", "single"]
+  }
 }

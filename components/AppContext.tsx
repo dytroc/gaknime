@@ -1,5 +1,5 @@
-import {Gaknime} from "lib/types"
-import {createContext} from "react"
+import { Gaknime } from 'lib/types'
+import { createContext } from 'react'
 
 export const AppContext = createContext<{
     darkMode: boolean,

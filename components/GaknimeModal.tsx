@@ -1,10 +1,10 @@
-import {useGaknimes} from "lib/client"
-import Head from "next/head"
-import React from "react"
-import {MdClose} from "react-icons/md"
-import styled from "styled-components"
-import {EpisodeListItem} from "./EpisodeListItem"
-import {PlayButton} from "./PlayButton";
+import { useGaknimes } from 'lib/client'
+import Head from 'next/head'
+import React from 'react'
+import { MdClose } from 'react-icons/md'
+import styled from 'styled-components'
+import { EpisodeListItem } from './EpisodeListItem'
+import { PlayButton } from './PlayButton';
 
 const Container = styled.div`
   background: var(--primary-color);
@@ -93,10 +93,10 @@ export const GaknimeModal: React.FC<{ id: string; close: () => void }> = ({ id, 
     const gaknime = gaknimes.find((x) => x.id === parseInt(id))
 
     React.useEffect(() => {
-        window.document.body.style.overflow = "hidden"
+        window.document.body.style.overflow = 'hidden'
 
         return () => {
-            window.document.body.style.overflow = "auto"
+            window.document.body.style.overflow = 'auto'
         }
     }, [])
 
@@ -109,14 +109,14 @@ export const GaknimeModal: React.FC<{ id: string; close: () => void }> = ({ id, 
             </Head>
             <div
                 style={{
-                    background: "var(--episode-title)",
-                    width: "100%",
+                    background: 'var(--episode-title)',
+                    width: '100%',
                     height: '35rem'
                 }}
             >
                 <div
                     style={{
-                        position: "relative",
+                        position: 'relative',
                         padding: 50,
                         height: '100%',
                         width: '100%'
@@ -128,47 +128,47 @@ export const GaknimeModal: React.FC<{ id: string; close: () => void }> = ({ id, 
               linear-gradient(0deg, rgba(53, 57, 74, 1) 8%, rgba(53, 57, 74, 0) 92%),
               linear-gradient(to right, rgba(53, 57, 74, 1) 30%, rgba(53, 57, 74, 0.4) 70%),
               url(https://i.ytimg.com/vi/${gaknime.thumbnail}/original.jpg)`,
-                            backgroundSize: "cover",
-                            backgroundPosition: "center",
-                            position: "absolute",
+                            backgroundSize: 'cover',
+                            backgroundPosition: 'center',
+                            position: 'absolute',
                             left: 0,
                             top: 0,
-                            width: "100%",
-                            height: "100%",
-                            filter: "brightness(.5)",
+                            width: '100%',
+                            height: '100%',
+                            filter: 'brightness(.5)',
                         }}
                     />
 
-                    <div style={{position: "relative"}}>
-                        <div style={{display: "flex"}}>
+                    <div style={{ position: 'relative' }}>
+                        <div style={{ display: 'flex' }}>
                             <RightRelative>
                                 {/* eslint-disable-next-line @next/next/no-img-element */}
                                 <img
                                     width='100%'
                                     className="thumbnail"
-                                    style={{borderRadius: 12}}
+                                    style={{ borderRadius: 12 }}
                                     src={`https://i.ytimg.com/vi/${gaknime.thumbnail}/original.jpg`}
                                     alt="thumbnail"
                                     draggable="false"
                                 />
                             </RightRelative>
 
-                            <div style={{flexGrow: 1}}/>
+                            <div style={{ flexGrow: 1 }}/>
                             <div
                                 style={{
-                                    background: "rgba(0, 0, 0, 0.5)",
+                                    background: 'rgba(0, 0, 0, 0.5)',
                                     padding: 4,
-                                    color: "#fff",
-                                    display: "flex",
+                                    color: '#fff',
+                                    display: 'flex',
                                     borderRadius: 100,
-                                    cursor: "pointer",
+                                    cursor: 'pointer',
                                 }}
                                 onClick={close}
                             >
                                 <MdClose size={32}/>
                             </div>
                         </div>
-                        <div style={{marginTop: 48}} className="introFlex">
+                        <div style={{ marginTop: 48 }} className="introFlex">
                             <style jsx>{`
                                 .introFlex {
                                   display: flex;
@@ -186,8 +186,8 @@ export const GaknimeModal: React.FC<{ id: string; close: () => void }> = ({ id, 
                             <div
                                 style={{
                                     flexGrow: 1,
-                                    display: "flex",
-                                    flexDirection: "column",
+                                    display: 'flex',
+                                    flexDirection: 'column',
                                 }}
                             >
                                 <div style={{
@@ -199,14 +199,14 @@ export const GaknimeModal: React.FC<{ id: string; close: () => void }> = ({ id, 
                                     <div
                                         style={{
                                             fontSize: 15,
-                                            color: "#ccc",
+                                            color: '#ccc',
                                             marginTop: 6,
                                         }}
                                     >
-                                        {gaknime.genres.join("·")}
+                                        {gaknime.genres.join('·')}
                                     </div>
                                 </div>
-                                <div style={{flexGrow: 1, height: 0}}/>
+                                <div style={{ flexGrow: 1, height: 0 }}/>
                                 <PlayButton targetEpisodeIndex={0} gaknime={gaknime}/>
                                 <GaknimeDescription>
                                     {gaknime.description}
@@ -216,8 +216,8 @@ export const GaknimeModal: React.FC<{ id: string; close: () => void }> = ({ id, 
                     </div>
                 </div>
             </div>
-            <div style={{padding: 32}}>
-                <div style={{display: "flex", flexDirection: "column", gap: 16}}>
+            <div style={{ padding: 32 }}>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
                     {gaknime.episodes.map((x, i) => (
                         <EpisodeListItem index={i} gaknime={gaknime} key={i} episode={x}/>
                     ))}

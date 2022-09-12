@@ -1,8 +1,8 @@
-import { readdir, readFile, writeFile } from "fs/promises"
-import { join } from "path"
-import { Banner, Gaknime } from "./types"
-import yaml from "yaml"
-import { z } from "zod"
+import { readdir, readFile, writeFile } from 'fs/promises'
+import { join } from 'path'
+import { Banner, Gaknime } from './types'
+import yaml from 'yaml'
+import { z } from 'zod'
 
 const episodeSchema = z.object({
   title: z.string(),
@@ -13,8 +13,8 @@ const episodeSchema = z.object({
 const schema = z.object({
   title: z.string(),
   thumbnail: z.string(),
-  tags: z.array(z.string()).min(1).default(["없음"]),
-  genres: z.array(z.string()).min(1).default(["없음"]),
+  tags: z.array(z.string()).min(1).default(['없음']),
+  genres: z.array(z.string()).min(1).default(['없음']),
   episodes: z.array(episodeSchema),
   id: z.number().int(),
   description: z.string(),
@@ -31,13 +31,13 @@ export const loadGaknimes = async (): Promise<Gaknime[]> => {
   if (cachedGaknimes) {
     return cachedGaknimes
   }
-  const root = join(process.cwd(), "gaknimes")
+  const root = join(process.cwd(), 'gaknimes')
   const files = await readdir(root)
 
   const output: Gaknime[] = []
 
   for (const file of files) {
-    if (!file.endsWith(".yml")) continue
+    if (!file.endsWith('.yml')) continue
     const data = yaml.parseAllDocuments(
       (await readFile(join(root, file))).toString()
     )
@@ -55,7 +55,7 @@ export const loadGaknimes = async (): Promise<Gaknime[]> => {
   }
 
   await writeFile(
-    join(process.cwd(), "public/gaknimes.json"),
+    join(process.cwd(), 'public/gaknimes.json'),
     JSON.stringify(output)
   )
 
@@ -70,14 +70,14 @@ export const loadBanners = async (): Promise<Banner[]> => {
   if (cachedBanners) return cachedBanners
 
   const gaknimes = await loadGaknimes()
-  const root = join(process.cwd(), "public", "banners")
+  const root = join(process.cwd(), 'public', 'banners')
   const files = await readdir(root)
 
   const output: Banner[] = []
 
   for (const file of files) {
     const json = JSON.parse(
-      (await readFile(join(root, file, "meta.json"))).toString()
+      (await readFile(join(root, file, 'meta.json'))).toString()
     )
     const res = await bannerSchema.safeParseAsync(json)
     if (res.success) {
@@ -110,7 +110,7 @@ export const loadBanners = async (): Promise<Banner[]> => {
   cachedBanners = output
 
   await writeFile(
-    join(process.cwd(), "public/banners.json"),
+    join(process.cwd(), 'public/banners.json'),
     JSON.stringify(output)
   )
 
