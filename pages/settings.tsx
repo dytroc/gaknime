@@ -56,8 +56,6 @@ const Settings: NextPage = () => {
   const {
     darkMode,
     setDarkMode,
-    hideWarn: showWarn,
-    setHideWarn: setShowWarn,
   } = React.useContext(AppContext)
 
   return (
@@ -75,15 +73,6 @@ const Settings: NextPage = () => {
           label="다크 모드"
           onChange={(v) => {
             setDarkMode(v)
-          }}
-        />
-      </SearchSection>
-      <SearchSection title="알림">
-        <SettingsSwitch
-          value={showWarn}
-          label="주의사항 영상 끄기"
-          onChange={(v) => {
-            setShowWarn(v)
           }}
         />
       </SearchSection>

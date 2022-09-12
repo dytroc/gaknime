@@ -8,7 +8,7 @@ import {AnimatePresence, motion} from "framer-motion";
 const absolute = ["/"]
 
 const Container = styled.div<{ isAbsolute: boolean }>`
-  height: 72px;
+  height: 65px;
   width: 100%;
 
   gap: 24px;
@@ -30,7 +30,7 @@ const Container = styled.div<{ isAbsolute: boolean }>`
 const Logo = styled.a`
   transition-duration: 0.4s;
   transition-property: color, text-shadow;
-  font-size: 28px;
+  font-size: 25px;
 
   font-family: ONE-Mobile-POP, -apple-system, BlinkMacSystemFont, Segoe UI,
     Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,
@@ -90,7 +90,7 @@ export const Header: React.FC = () => {
                 background:
                     scrollY <= 100 && isAbsolute ? "transparent" : "var(--primary-color)",
                 boxShadow:
-                    scrollY <= 100 && isAbsolute ? "var(--header-border) 0 0 0 0" : "var(--header-border) 0 0.2vh 0 0",
+                    scrollY <= 100 && isAbsolute ? "var(--border-color) 0 0 0 0" : "var(--border-color) 0 0.2vh 0 0",
                 transition: "all ease .2s",
             }}
         >

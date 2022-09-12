@@ -9,9 +9,9 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({
                                                                 }) => {
     const router = useRouter()
 
-    if (router.route === "/item/[id]/[episode]") {
-        return <>{children}</>
-    }
+    // if (router.route === "/item/[id]/[episode]") {
+    //     return <>{children}</>
+    // }
 
     const closeModal = () => {
         const query = router.query
@@ -31,7 +31,7 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({
         <div
             style={{display: "flex", flexDirection: "column", minHeight: "100vh", overflowX: "hidden"}}
         >
-            <Header/>
+            <Header />
             {children}
             <footer style={{
                 height: '2rem'

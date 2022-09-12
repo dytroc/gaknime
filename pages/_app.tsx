@@ -6,16 +6,12 @@ import {Layout} from "components/layout"
 import {AppContext} from "components/AppContext"
 import {Gaknime} from "lib/types"
 import Head from "next/head"
-import Script from 'next/script';
 
 const MyApp = ({Component, pageProps}: AppProps) => {
     const [darkMode, setDarkMode] = useState(
         typeof window !== "undefined" ? !!localStorage.getItem("__darkmode") : false
     )
     const [isMobile, setIsMobile] = useState(false)
-    const [hideWarn, setHideWarn] = useState(
-        typeof window !== "undefined" ? !!localStorage.getItem("__hideWarn") : false
-    )
 
     const [gaknimes, setGaknimes] = useState<Gaknime[]>([])
 
@@ -62,15 +58,6 @@ const MyApp = ({Component, pageProps}: AppProps) => {
                 },
                 isMobile: isMobile,
                 setIsMobile: setIsMobile,
-                hideWarn: hideWarn,
-                setHideWarn: (v) => {
-                    setHideWarn(v)
-                    if (v) {
-                        localStorage.setItem("__hideWarn", "1")
-                    } else {
-                        localStorage.removeItem("__hideWarn")
-                    }
-                },
                 gaknimes,
             }}
         >
