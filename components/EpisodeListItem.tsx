@@ -70,7 +70,7 @@ export const EpisodeListItem: React.FC<{
                 <div>
                     <Thumbnail
                         style={{
-                            backgroundImage: `url(https://i.ytimg.com/vi/${episode.code}/original.jpg)`,
+                            backgroundImage: `url(https://i.ytimg.com/vi/${episode.code}/maxresdefault.jpg)`,
                         }}
                     >
                         <ThumbnailContent>

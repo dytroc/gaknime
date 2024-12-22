@@ -175,7 +175,7 @@ const EpisodeItem: React.FC<{ gaknime: Gaknime; episode: Episode; index: number;
                 <div>
                     <Thumbnail
                         style={{
-                            backgroundImage: `url(https://i.ytimg.com/vi/${episode.code}/original.jpg)`,
+                            backgroundImage: `url(https://i.ytimg.com/vi/${episode.code}/maxresdefault.jpg)`,
                         }}
                     />
                 </div>

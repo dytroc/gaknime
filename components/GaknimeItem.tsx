@@ -36,7 +36,7 @@ export const GaknimeItem: React.FC<{
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
                 ref={imageRef}
-                src={`https://i.ytimg.com/vi/${gaknime.thumbnail}/original.jpg`}
+                src={`https://i.ytimg.com/vi/${gaknime.thumbnail}/maxresdefault.jpg`}
                 alt="Thumbnail"
                 width="100%"
                 style={{ borderRadius: 6 }}
