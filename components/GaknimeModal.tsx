@@ -127,7 +127,7 @@ export const GaknimeModal: React.FC<{ id: string; close: () => void }> = ({ id, 
                             backgroundImage: `
               linear-gradient(0deg, rgba(53, 57, 74, 1) 8%, rgba(53, 57, 74, 0) 92%),
               linear-gradient(to right, rgba(53, 57, 74, 1) 30%, rgba(53, 57, 74, 0.4) 70%),
-              url(https://i.ytimg.com/vi/${gaknime.thumbnail}/original.jpg)`,
+              url(https://i.ytimg.com/vi/${gaknime.thumbnail}/maxresdefault.jpg)`,
                             backgroundSize: 'cover',
                             backgroundPosition: 'center',
                             position: 'absolute',
@@ -147,7 +147,7 @@ export const GaknimeModal: React.FC<{ id: string; close: () => void }> = ({ id, 
                                     width='100%'
                                     className="thumbnail"
                                     style={{ borderRadius: 12 }}
-                                    src={`https://i.ytimg.com/vi/${gaknime.thumbnail}/original.jpg`}
+                                    src={`https://i.ytimg.com/vi/${gaknime.thumbnail}/maxresdefault.jpg`}
                                     alt="thumbnail"
                                     draggable="false"
                                 />
